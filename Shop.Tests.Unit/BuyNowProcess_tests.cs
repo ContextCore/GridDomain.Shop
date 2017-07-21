@@ -14,19 +14,19 @@ using Shop.Domain.Aggregates.SkuStockAggregate.Events;
 using Shop.Domain.Aggregates.UserAggregate;
 using Shop.Domain.Aggregates.UserAggregate.Commands;
 using Shop.Domain.Aggregates.UserAggregate.Events;
-using Shop.Domain.Sagas;
+using Shop.Domain.ProcessManagers;
 using Shop.Tests.Unit.DomainServices;
 using Xunit;
 
-namespace Shop.Tests.Unit.BuyNowSaga
+namespace Shop.Tests.Unit
 {
    
-    public class BuyNowSaga_tests
+    public class BuyNowProcess_tests
     {
         private readonly InMemoryPriceCalculator _inMemoryPriceCalculator;
         private readonly BuyNowProcessManagerFactory _buyNowProcessManagerFactory;
 
-        public BuyNowSaga_tests()
+        public BuyNowProcess_tests()
         {
             _inMemoryPriceCalculator = new InMemoryPriceCalculator();
             _buyNowProcessManagerFactory = new BuyNowProcessManagerFactory(_inMemoryPriceCalculator, Log.Logger);
@@ -35,7 +35,7 @@ namespace Shop.Tests.Unit.BuyNowSaga
         [Fact]
         public async Task Given_adding_order_items_state_When_order_item_added_Then_reserve_stock_command_is_issued()
         {
-            var scenario = SagaScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, _buyNowProcessManagerFactory);
+            var scenario = ProcessScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, _buyNowProcessManagerFactory);
             var state = scenario.NewState(nameof(BuyNow.AddingOrderItems), c => c.Without(d => d.ReserveId));
 
             _inMemoryPriceCalculator.Add(state.SkuId, new Money(100));
@@ -57,8 +57,8 @@ namespace Shop.Tests.Unit.BuyNowSaga
         public async Task Given_creating_order_state_When_order_created_Then_add_items_to_order_command_is_issued()
         {
             var calculator = new InMemoryPriceCalculator();
-            var sagaFactory = new BuyNowProcessManagerFactory(calculator, Log.Logger);
-            var scenario = SagaScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, sagaFactory);
+            var factory = new BuyNowProcessManagerFactory(calculator, Log.Logger);
+            var scenario = ProcessScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, factory);
 
             var state = scenario.NewState(nameof(BuyNow.CreatingOrder), c => c.Without(d => d.ReserveId));
 
@@ -79,7 +79,7 @@ namespace Shop.Tests.Unit.BuyNowSaga
        [Fact]
         public async Task Given_paying_state_When_account_withdrawal_for_bad_order_Then_state_is_not_changed()
         {
-            var scenario = SagaScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, _buyNowProcessManagerFactory);
+            var scenario = ProcessScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, _buyNowProcessManagerFactory);
 
             var state = scenario.NewState(nameof(BuyNow.Paying));
 
@@ -93,7 +93,7 @@ namespace Shop.Tests.Unit.BuyNowSaga
        [Fact]
         public async Task Given_paying_state_When_account_withdrawal_for_our_order_Then_state_is_taking_stock()
         {
-            var scenario = SagaScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, _buyNowProcessManagerFactory);
+            var scenario = ProcessScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, _buyNowProcessManagerFactory);
 
             var state = scenario.NewState(nameof(BuyNow.Paying));
 
@@ -108,7 +108,7 @@ namespace Shop.Tests.Unit.BuyNowSaga
        [Fact]
         public async Task Given_reserving_state_When_order_item_added_Then_reserve_stock_command_is_issued()
         {
-            var scenario = SagaScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, _buyNowProcessManagerFactory);
+            var scenario = ProcessScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, _buyNowProcessManagerFactory);
             var state = scenario.NewState(nameof(BuyNow.Reserving), c => c.Without(d => d.ReserveId));
 
             await scenario.Given(state)
@@ -122,7 +122,7 @@ namespace Shop.Tests.Unit.BuyNowSaga
        [Fact]
         public async Task Given_reserving_state_When_order_total_calculated_and__order_item_added_Then_state_is_changed()
         {
-            var scenario = SagaScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, _buyNowProcessManagerFactory);
+            var scenario = ProcessScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, _buyNowProcessManagerFactory);
             var state = scenario.NewState(nameof(BuyNow.Reserving), c => c.Without(s => s.OrderWarReservedStatus));
             var totalPrice = new Money(100);
 
@@ -139,7 +139,7 @@ namespace Shop.Tests.Unit.BuyNowSaga
        [Fact]
         public async Task Given_reserving_state_When_order_total_calculated_Then_reserve_stock_command_is_issued_And_state_is_not_changed()
         {
-            var scenario = SagaScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, _buyNowProcessManagerFactory);
+            var scenario = ProcessScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, _buyNowProcessManagerFactory);
             var state = scenario.NewState(nameof(BuyNow.Reserving), c => c.Without(d => d.ReserveId));
 
             var totalPrice = new Money(100);
@@ -153,11 +153,11 @@ namespace Shop.Tests.Unit.BuyNowSaga
         }
 
        [Fact]
-        public async Task Given_sku_purchase_ordered_Then_buy_now_saga_is_created_and_create_order_command_issued()
+        public async Task Given_sku_purchase_ordered_Then_buy_now_process_is_created_and_create_order_command_issued()
         {
             SkuPurchaseOrdered ordered = new Fixture().Create<SkuPurchaseOrdered>();
 
-            await SagaScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, _buyNowProcessManagerFactory)
+            await ProcessScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, _buyNowProcessManagerFactory)
                               .When(ordered)
                               .Then(new CreateOrderCommand(ordered.OrderId, ordered.SourceId))
                               .Run()
@@ -165,13 +165,13 @@ namespace Shop.Tests.Unit.BuyNowSaga
                                                                     nameof(Command.Time),
                                                                     nameof(Command.Id)));
 
-            //igoring saga id as it will be unique created on saga creation from event
+            //igoring process id as it will be unique created on process creation from event
         }
 
        [Fact]
         public async Task Given_taking_stock_state_When_stockReserveTaken_Then_complete_order_and_complete_user_pending_order_commands_are_issued()
         {
-            var scenario = SagaScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, _buyNowProcessManagerFactory);
+            var scenario = ProcessScenario.New<BuyNow, BuyNowState>(BuyNow.Descriptor, _buyNowProcessManagerFactory);
             var state = scenario.NewState(nameof(BuyNow.TakingStock));
 
             await scenario.Given(state)

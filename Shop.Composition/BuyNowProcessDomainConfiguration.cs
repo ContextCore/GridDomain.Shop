@@ -2,14 +2,14 @@ using GridDomain.Configuration;
 using GridDomain.Node.Configuration.Composition;
 using Serilog;
 using Shop.Domain.DomainServices.PriceCalculator;
-using Shop.Domain.Sagas;
+using Shop.Domain.ProcessManagers;
 
 namespace Shop.Composition {
-    public class BuyNowSagaDomainConfiguration : IDomainConfiguration
+    public class BuyNowProcessDomainConfiguration : IDomainConfiguration
     {
         private readonly IPriceCalculator _calculator;
         private readonly ILogger _log;
-        public BuyNowSagaDomainConfiguration(IPriceCalculator calculator, ILogger log)
+        public BuyNowProcessDomainConfiguration(IPriceCalculator calculator, ILogger log)
         {
             _calculator = calculator;
             _log = log;

@@ -5,7 +5,7 @@ using Serilog;
 using Shop.Domain.Aggregates.UserAggregate.Events;
 using Shop.Domain.DomainServices.PriceCalculator;
 
-namespace Shop.Domain.Sagas
+namespace Shop.Domain.ProcessManagers
 {
     public class BuyNowProcessManagerFactory : IProcessManagerCreator<BuyNowState>,
                                      IProcessManagerCreator<BuyNowState,SkuPurchaseOrdered>
@@ -24,9 +24,9 @@ namespace Shop.Domain.Sagas
             return new ProcessManager<BuyNowState>(new BuyNow(_priceCalculator),state, _log);
         }
 
-        public IProcessManager<BuyNowState> CreateNew(SkuPurchaseOrdered message, Guid? sagaid = null)
+        public IProcessManager<BuyNowState> CreateNew(SkuPurchaseOrdered message, Guid? processId = null)
         {
-            return Create(new BuyNowState(sagaid ?? Guid.NewGuid(), nameof(BuyNow.Initial)));
+            return Create(new BuyNowState(processId ?? Guid.NewGuid(), nameof(BuyNow.Initial)));
         }
     }
 }

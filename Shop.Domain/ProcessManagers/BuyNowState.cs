@@ -1,10 +1,7 @@
 ﻿using System;
-using GridDomain.Node.Configuration.Composition;
 using GridDomain.Processes;
-using Serilog;
-using Shop.Domain.DomainServices.PriceCalculator;
 
-namespace Shop.Domain.Sagas
+namespace Shop.Domain.ProcessManagers
 {
   
     public class BuyNowState : IProcessState

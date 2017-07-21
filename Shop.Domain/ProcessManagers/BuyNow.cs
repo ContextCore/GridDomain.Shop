@@ -11,7 +11,7 @@ using Shop.Domain.Aggregates.UserAggregate.Commands;
 using Shop.Domain.Aggregates.UserAggregate.Events;
 using Shop.Domain.DomainServices.PriceCalculator;
 
-namespace Shop.Domain.Sagas
+namespace Shop.Domain.ProcessManagers
 {
     public class BuyNow : Process<BuyNowState>
     {
