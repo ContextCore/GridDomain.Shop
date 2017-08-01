@@ -1,13 +1,29 @@
 using System;
 using System.Linq;
-using GridDomain.Logging;
+using Newtonsoft.Json;
+using Serilog;
 using Shop.Domain.Aggregates.SkuStockAggregate.Events;
 using Shop.ReadModel.Context;
 using Xunit;
 
 namespace Shop.Tests.Unit.SkuStockAggregate.ProjectionBuilder
 {
-    
+    public static class ObjectLogExtensions
+    {
+        private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings
+                                                                                {
+                                                                                    TypeNameHandling
+                                                                                        =
+                                                                                        TypeNameHandling
+                                                                                            .All
+                                                                                };
+
+        public static string ToPropsString(this object o)
+        {
+            return JsonConvert.SerializeObject(o, Formatting.Indented, JsonSerializerSettings);
+        }
+    }
+
     public class SkuStock_reserved_tests : SkuStockProjectionBuilderTests
     {
         private StockAdded _stockAddedEvent;
@@ -33,8 +49,8 @@ namespace Shop.Tests.Unit.SkuStockAggregate.ProjectionBuilder
                 Assert.Equal(3, context.StockHistory.Count());
             }
         }
-
-       [Fact]
+     
+        [Fact]
         public void Then_history_row_is_added()
         {
             using (var context = CreateContext())
@@ -42,6 +58,7 @@ namespace Shop.Tests.Unit.SkuStockAggregate.ProjectionBuilder
                 var history = context.StockHistory.Find(_stockCreatedEvent.SourceId, (long) 3);
                 if (history != null)
                     return;
+
 
                 foreach (var hist in context.StockHistory)
                     Console.WriteLine(hist.ToPropsString());

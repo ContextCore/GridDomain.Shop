@@ -106,9 +106,6 @@
     <Reference Include="GridDomain.ProcessManagers, Version=2.0.588.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GridDomain.ProcessManagers.2.0.588-alfa\lib\net461\GridDomain.ProcessManagers.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Tests.Common, Version=2.0.588.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Tests.Common.2.0.588-alfa\lib\net461\GridDomain.Tests.Common.dll</HintPath>
-    </Reference>
     <Reference Include="Helios, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Helios.2.1.2\lib\net45\Helios.dll</HintPath>
     </Reference>
