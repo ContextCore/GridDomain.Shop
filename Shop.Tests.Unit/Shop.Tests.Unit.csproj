@@ -91,29 +91,29 @@
     <Reference Include="Google.ProtocolBuffers.Serialization, Version=2.4.1.555, Culture=neutral, PublicKeyToken=55f7125234beb589, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.ProtocolBuffers.2.4.1.555\lib\net40\Google.ProtocolBuffers.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Common, Version=2.0.596.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Common.2.0.596-alfa\lib\net461\GridDomain.Common.dll</HintPath>
+    <Reference Include="GridDomain.Common, Version=2.0.599.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Common.2.0.599-alfa\lib\net461\GridDomain.Common.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Configuration, Version=2.0.596.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Configuration.2.0.596-alfa\lib\net461\GridDomain.Configuration.dll</HintPath>
+    <Reference Include="GridDomain.Configuration, Version=2.0.599.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Configuration.2.0.599-alfa\lib\net461\GridDomain.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.CQRS, Version=2.0.596.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.CQRS.2.0.596-alfa\lib\net461\GridDomain.CQRS.dll</HintPath>
+    <Reference Include="GridDomain.CQRS, Version=2.0.599.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.CQRS.2.0.599-alfa\lib\net461\GridDomain.CQRS.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.EventSourcing, Version=2.0.596.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.EventSourcing.2.0.596-alfa\lib\net461\GridDomain.EventSourcing.dll</HintPath>
+    <Reference Include="GridDomain.EventSourcing, Version=2.0.599.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.EventSourcing.2.0.599-alfa\lib\net461\GridDomain.EventSourcing.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Node, Version=2.0.596.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Node.2.0.596-alfa\lib\net461\GridDomain.Node.dll</HintPath>
+    <Reference Include="GridDomain.Node, Version=2.0.599.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Node.2.0.599-alfa\lib\net461\GridDomain.Node.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.ProcessManagers, Version=2.0.596.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.ProcessManagers.2.0.596-alfa\lib\net461\GridDomain.ProcessManagers.dll</HintPath>
+    <Reference Include="GridDomain.ProcessManagers, Version=2.0.599.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.ProcessManagers.2.0.599-alfa\lib\net461\GridDomain.ProcessManagers.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Scheduling, Version=2.0.590.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Scheduling.2.0.590-alfa\lib\net461\GridDomain.Scheduling.dll</HintPath>
+    <Reference Include="GridDomain.Scheduling, Version=2.0.599.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Scheduling.2.0.599-alfa\lib\net461\GridDomain.Scheduling.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Tests.Common, Version=2.0.596.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Tests.Common.2.0.596-alfa\lib\net461\GridDomain.Tests.Common.dll</HintPath>
+    <Reference Include="GridDomain.Tests.Common, Version=2.0.599.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Tests.Common.2.0.599-alfa\lib\net461\GridDomain.Tests.Common.dll</HintPath>
     </Reference>
     <Reference Include="Helios, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Helios.2.1.2\lib\net45\Helios.dll</HintPath>
@@ -268,16 +268,16 @@
       <HintPath>..\packages\Wire.0.7.1\lib\net45\Wire.dll</HintPath>
     </Reference>
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
+      <HintPath>..\packages\xunit.abstractions.2.0.1\lib\net35\xunit.abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.assert.2.1.0\lib\dotnet\xunit.assert.dll</HintPath>
+    <Reference Include="xunit.assert, Version=2.2.0.3545, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.assert.2.2.0\lib\netstandard1.1\xunit.assert.dll</HintPath>
     </Reference>
-    <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.extensibility.core.2.1.0\lib\dotnet\xunit.core.dll</HintPath>
+    <Reference Include="xunit.core, Version=2.2.0.3545, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.extensibility.core.2.2.0\lib\netstandard1.1\xunit.core.dll</HintPath>
     </Reference>
-    <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
+    <Reference Include="xunit.execution.desktop, Version=2.2.0.3545, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.extensibility.execution.2.2.0\lib\net452\xunit.execution.desktop.dll</HintPath>
     </Reference>
     <Reference Include="xunit2.should, Version=1.0.12.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\xunit2.should.1.0.12\lib\net45\xunit2.should.dll</HintPath>
