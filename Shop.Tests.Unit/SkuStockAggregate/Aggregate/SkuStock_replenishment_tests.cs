@@ -37,7 +37,7 @@ namespace Shop.Tests.Unit.SkuStockAggregate.Aggregate
                                    .Given(new SkuStockCreated(id, _skuId, 50, TimeSpan.FromMilliseconds(100)))
                                    .When(new AddToStockCommand(id, _skuId, -10, "test batch"))
                                    .Run()
-                                   .ShouldThrowCommand<ArgumentException>();
+                                   .CommandShouldThrow<ArgumentException>();
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace Shop.Tests.Unit.SkuStockAggregate.Aggregate
                                    .Given(new SkuStockCreated(id, _skuId, 50, TimeSpan.FromMilliseconds(100)))
                                    .When(new AddToStockCommand(id, Guid.NewGuid(), 10, "test batch"))
                                    .Run()
-                                   .ShouldThrowCommand<InvalidSkuAddException>();
+                                   .CommandShouldThrow<InvalidSkuAddException>();
         }
     }
 }

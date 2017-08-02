@@ -25,7 +25,7 @@ namespace Shop.Tests.Unit.OrderAggregate.Aggregate.Commands
                                                           123,
                                                           new Money(1)))
                           .Run()
-                          .ShouldThrow<CantAddItemsToClosedOrder>();
+                          .CommandShouldThrow<CantAddItemsToClosedOrder>();
         }
 
         [Fact]
@@ -36,7 +36,7 @@ namespace Shop.Tests.Unit.OrderAggregate.Aggregate.Commands
                                  new OrderCompleted(scenario.Aggregate.Id, OrderStatus.Paid))
                           .When(new CompleteOrderCommand(scenario.Aggregate.Id))
                           .Run()
-                          .ShouldThrow<CannotCompleteAlreadyClosedOrderException>();
+                          .CommandShouldThrow<CannotCompleteAlreadyClosedOrderException>();
         }
 
         [Fact]

@@ -29,7 +29,7 @@ namespace Shop.Tests.Unit.OrderAggregate.Aggregate.Commands
                                                           20,
                                                           new Money(-123)))
                           .Run()
-                          .ShouldThrow<InvalidMoneyException>();
+                          .CommandShouldThrow<InvalidMoneyException>();
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace Shop.Tests.Unit.OrderAggregate.Aggregate.Commands
                                                           -1,
                                                           new Money(123)))
                           .Run()
-                          .ShouldThrow<InvalidQuantityException>();
+                          .CommandShouldThrow<InvalidQuantityException>();
         }
     }
 }

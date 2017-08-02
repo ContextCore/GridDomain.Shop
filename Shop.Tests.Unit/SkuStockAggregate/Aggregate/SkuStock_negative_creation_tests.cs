@@ -19,7 +19,7 @@ namespace Shop.Tests.Unit.SkuStockAggregate.Aggregate
                                                                    "test batch",
                                                                    TimeSpan.FromDays(1)))
                                    .Run()
-                                   .ShouldThrow<ArgumentException>();
+                                   .CommandShouldThrow<ArgumentException>();
         }
     }
 }

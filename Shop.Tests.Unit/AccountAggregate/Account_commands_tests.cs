@@ -54,7 +54,7 @@ namespace Shop.Tests.Unit.AccountAggregate
                                  new AccountReplenish(scenario.Aggregate.Id, Guid.NewGuid(), new Money(100)))
                           .When(new PayForOrderCommand(scenario.Aggregate.Id, new Money(10000), Guid.NewGuid()))
                           .Run()
-                          .ShouldThrow<NotEnoughMoneyException>();
+                          .CommandShouldThrow<NotEnoughMoneyException>();
         }
 
 

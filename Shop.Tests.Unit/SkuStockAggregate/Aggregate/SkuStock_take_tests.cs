@@ -39,7 +39,7 @@ namespace Shop.Tests.Unit.SkuStockAggregate.Aggregate
                                           new StockAdded(id, 10, "test batch 2"))
                                    .When(new TakeFromStockCommand(id, 100))
                                    .Run()
-                                   .ShouldThrow<OutOfStockException>();
+                                   .CommandShouldThrow<OutOfStockException>();
         }
     }
 }
