@@ -279,9 +279,6 @@
     <Reference Include="xunit.execution.desktop, Version=2.2.0.3545, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\packages\xunit.extensibility.execution.2.2.0\lib\net452\xunit.execution.desktop.dll</HintPath>
     </Reference>
-    <Reference Include="xunit2.should, Version=1.0.12.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit2.should.1.0.12\lib\net45\xunit2.should.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountAggregate\Account_creation_tests.cs" />
@@ -337,10 +334,6 @@
     <Compile Include="Given_new_user.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\GridDomain.Logging\GridDomain.Logging.csproj">
-      <Project>{E356647A-561E-4290-AD71-EF5DC92BF5C7}</Project>
-      <Name>GridDomain.Logging</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shop.Composition\Shop.Composition.csproj">
       <Project>{b2a45ba3-c914-429e-bcc4-df1199e6d072}</Project>
       <Name>Shop.Composition</Name>
