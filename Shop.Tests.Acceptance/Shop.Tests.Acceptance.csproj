@@ -88,23 +88,23 @@
     <Reference Include="Google.ProtocolBuffers.Serialization, Version=2.4.1.555, Culture=neutral, PublicKeyToken=55f7125234beb589, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.ProtocolBuffers.2.4.1.555\lib\net40\Google.ProtocolBuffers.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Common, Version=2.0.599.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Common.2.0.599-alfa\lib\net461\GridDomain.Common.dll</HintPath>
+    <Reference Include="GridDomain.Common, Version=2.0.604.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Common.2.0.604-alfa\lib\net461\GridDomain.Common.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Configuration, Version=2.0.599.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Configuration.2.0.599-alfa\lib\net461\GridDomain.Configuration.dll</HintPath>
+    <Reference Include="GridDomain.Configuration, Version=2.0.604.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Configuration.2.0.604-alfa\lib\net461\GridDomain.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.CQRS, Version=2.0.599.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.CQRS.2.0.599-alfa\lib\net461\GridDomain.CQRS.dll</HintPath>
+    <Reference Include="GridDomain.CQRS, Version=2.0.604.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.CQRS.2.0.604-alfa\lib\net461\GridDomain.CQRS.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.EventSourcing, Version=2.0.599.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.EventSourcing.2.0.599-alfa\lib\net461\GridDomain.EventSourcing.dll</HintPath>
+    <Reference Include="GridDomain.EventSourcing, Version=2.0.604.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.EventSourcing.2.0.604-alfa\lib\net461\GridDomain.EventSourcing.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Node, Version=2.0.599.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Node.2.0.599-alfa\lib\net461\GridDomain.Node.dll</HintPath>
+    <Reference Include="GridDomain.Node, Version=2.0.604.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Node.2.0.604-alfa\lib\net461\GridDomain.Node.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.ProcessManagers, Version=2.0.599.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.ProcessManagers.2.0.599-alfa\lib\net461\GridDomain.ProcessManagers.dll</HintPath>
+    <Reference Include="GridDomain.ProcessManagers, Version=2.0.604.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.ProcessManagers.2.0.604-alfa\lib\net461\GridDomain.ProcessManagers.dll</HintPath>
     </Reference>
     <Reference Include="Helios, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Helios.2.1.2\lib\net45\Helios.dll</HintPath>
@@ -134,8 +134,9 @@
       <HintPath>..\packages\Serilog.2.5.0\lib\net46\Serilog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    <Reference Include="System.Collections.Immutable, Version=1.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.3.1\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -165,10 +166,6 @@
     <Compile Include="SqlSequence_tests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\GridDomain.Logging\GridDomain.Logging.csproj">
-      <Project>{e356647a-561e-4290-ad71-ef5dc92bf5c7}</Project>
-      <Name>GridDomain.Logging</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shop.Composition\Shop.Composition.csproj">
       <Project>{b2a45ba3-c914-429e-bcc4-df1199e6d072}</Project>
       <Name>Shop.Composition</Name>
@@ -191,9 +188,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="job_scheduling_data_2_0.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
