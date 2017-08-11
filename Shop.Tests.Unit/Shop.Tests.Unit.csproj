@@ -91,29 +91,29 @@
     <Reference Include="Google.ProtocolBuffers.Serialization, Version=2.4.1.555, Culture=neutral, PublicKeyToken=55f7125234beb589, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.ProtocolBuffers.2.4.1.555\lib\net40\Google.ProtocolBuffers.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Common, Version=2.0.604.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Common.2.0.604-alfa\lib\net461\GridDomain.Common.dll</HintPath>
+    <Reference Include="GridDomain.Common, Version=2.0.682.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Common.2.0.682-alfa\lib\net461\GridDomain.Common.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Configuration, Version=2.0.604.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Configuration.2.0.604-alfa\lib\net461\GridDomain.Configuration.dll</HintPath>
+    <Reference Include="GridDomain.Configuration, Version=2.0.682.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Configuration.2.0.682-alfa\lib\net461\GridDomain.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.CQRS, Version=2.0.604.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.CQRS.2.0.604-alfa\lib\net461\GridDomain.CQRS.dll</HintPath>
+    <Reference Include="GridDomain.CQRS, Version=2.0.682.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.CQRS.2.0.682-alfa\lib\net461\GridDomain.CQRS.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.EventSourcing, Version=2.0.604.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.EventSourcing.2.0.604-alfa\lib\net461\GridDomain.EventSourcing.dll</HintPath>
+    <Reference Include="GridDomain.EventSourcing, Version=2.0.682.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.EventSourcing.2.0.682-alfa\lib\net461\GridDomain.EventSourcing.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Node, Version=2.0.604.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Node.2.0.604-alfa\lib\net461\GridDomain.Node.dll</HintPath>
+    <Reference Include="GridDomain.Node, Version=2.0.682.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Node.2.0.682-alfa\lib\net461\GridDomain.Node.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.ProcessManagers, Version=2.0.604.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.ProcessManagers.2.0.604-alfa\lib\net461\GridDomain.ProcessManagers.dll</HintPath>
+    <Reference Include="GridDomain.ProcessManagers, Version=2.0.682.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.ProcessManagers.2.0.682-alfa\lib\net461\GridDomain.ProcessManagers.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Scheduling, Version=2.0.599.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Scheduling.2.0.599-alfa\lib\net461\GridDomain.Scheduling.dll</HintPath>
+    <Reference Include="GridDomain.Scheduling, Version=2.0.682.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Scheduling.2.0.682-alfa\lib\net461\GridDomain.Scheduling.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Tests.Common, Version=2.0.604.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Tests.Common.2.0.604-alfa\lib\net461\GridDomain.Tests.Common.dll</HintPath>
+    <Reference Include="GridDomain.Tests.Common, Version=2.0.682.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Tests.Common.2.0.682-alfa\lib\net461\GridDomain.Tests.Common.dll</HintPath>
     </Reference>
     <Reference Include="Helios, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Helios.2.1.2\lib\net45\Helios.dll</HintPath>

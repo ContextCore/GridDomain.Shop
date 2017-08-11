@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -14,6 +15,12 @@ namespace Shop.Web.Data
             : base(options)
         {
         }
+
+       //public ApplicationDbContext()
+       //    : this(new DbContextOptionsBuilder<ApplicationDbContext>().UseSqlServer(
+       //        "Data Source = (local); Initial Catalog = ShopIdentity; Integrated Security = True").Options)
+       //{
+       //}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

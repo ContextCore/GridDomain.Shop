@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://shop.griddomain.local:44310",
-      "sslPort": 44317
+      "applicationUrl": "https://localhost:44346",
+      "sslPort": 44346
     }
   },
   "profiles": {
