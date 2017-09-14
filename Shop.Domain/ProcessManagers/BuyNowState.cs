@@ -23,9 +23,9 @@ namespace Shop.Domain.ProcessManagers
 
         public Guid Id { get; }
         public string CurrentStateName { get; set; }
-        public object Clone()
+        public IProcessState Clone()
         {
-            return MemberwiseClone();
+            return (IProcessState)MemberwiseClone();
         }
     }
 }
