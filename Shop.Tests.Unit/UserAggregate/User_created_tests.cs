@@ -9,7 +9,7 @@ using Xunit;
 
 namespace Shop.Tests.Unit.UserAggregate
 {
-    internal class User_created_tests
+    public class User_created_tests
     {
         private readonly Guid _stockId = Guid.NewGuid();
 

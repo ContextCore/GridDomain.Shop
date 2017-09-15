@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Shop.Tests.Unit</RootNamespace>
     <AssemblyName>Shop.Tests.Unit</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Akka, Version=1.3.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Akka.1.3.2-beta425\lib\net45\Akka.dll</HintPath>
+      <HintPath>..\packages\Akka.1.3.2-beta426\lib\net45\Akka.dll</HintPath>
     </Reference>
     <Reference Include="Akka.Cluster, Version=1.3.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Akka.Cluster.1.3.2-beta425\lib\net45\Akka.Cluster.dll</HintPath>
@@ -49,14 +49,14 @@
     <Reference Include="Akka.DI.Core, Version=1.3.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Akka.DI.Core.1.3.2-beta425\lib\net45\Akka.DI.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Akka.DI.Unity, Version=1.1.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Akka.DI.Unity.1.1.0\lib\net45\Akka.DI.Unity.dll</HintPath>
+    <Reference Include="Akka.DI.Unity, Version=1.2.3.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Akka.DI.Unity.1.2.3\lib\net45\Akka.DI.Unity.dll</HintPath>
     </Reference>
-    <Reference Include="Akka.Logger.Serilog, Version=1.1.1.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Akka.Logger.Serilog.1.1.1\lib\net45\Akka.Logger.Serilog.dll</HintPath>
+    <Reference Include="Akka.Logger.Serilog, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Akka.Logger.Serilog.1.3.0\lib\net45\Akka.Logger.Serilog.dll</HintPath>
     </Reference>
-    <Reference Include="Akka.Monitoring, Version=0.5.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Akka.Monitoring.0.5.3\lib\net45\Akka.Monitoring.dll</HintPath>
+    <Reference Include="Akka.Monitoring, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Akka.Monitoring.0.7.0\lib\net45\Akka.Monitoring.dll</HintPath>
     </Reference>
     <Reference Include="Akka.Monitoring.ApplicationInsights, Version=0.5.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Akka.Monitoring.ApplicationInsights.0.5.3\lib\net45\Akka.Monitoring.ApplicationInsights.dll</HintPath>
@@ -82,11 +82,11 @@
     <Reference Include="Akka.Serialization.Wire, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Akka.Serialization.Wire.1.1.2.30-beta\lib\net45\Akka.Serialization.Wire.dll</HintPath>
     </Reference>
-    <Reference Include="Akka.TestKit, Version=1.1.3.31, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Akka.TestKit.1.1.3\lib\net45\Akka.TestKit.dll</HintPath>
+    <Reference Include="Akka.TestKit, Version=1.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Akka.TestKit.1.3.2-beta426\lib\net45\Akka.TestKit.dll</HintPath>
     </Reference>
-    <Reference Include="Akka.TestKit.Xunit2, Version=1.1.3.32, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Akka.TestKit.Xunit2.1.1.3\lib\net45\Akka.TestKit.Xunit2.dll</HintPath>
+    <Reference Include="Akka.TestKit.Xunit2, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Akka.TestKit.Xunit2.1.3.1\lib\net45\Akka.TestKit.Xunit2.dll</HintPath>
     </Reference>
     <Reference Include="Autofac, Version=4.6.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.6.1\lib\net45\Autofac.dll</HintPath>
@@ -155,7 +155,7 @@
       <HintPath>..\packages\GridDomain.Scheduling.Akka.2.1.754-alfa\lib\net46\GridDomain.Scheduling.Akka.dll</HintPath>
     </Reference>
     <Reference Include="GridDomain.Tests.Common, Version=2.1.754.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Tests.Common.2.1.754-alfa\lib\netstandard2.0\GridDomain.Tests.Common.dll</HintPath>
+      <HintPath>..\packages\GridDomain.Tests.Common.2.1.754-alfa\lib\net47\GridDomain.Tests.Common.dll</HintPath>
     </Reference>
     <Reference Include="GridDomain.Tools, Version=2.1.754.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GridDomain.Tools.2.1.754-alfa\lib\netstandard2.0\GridDomain.Tools.dll</HintPath>
@@ -163,8 +163,8 @@
     <Reference Include="GridDomain.Transport, Version=2.1.754.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GridDomain.Transport.2.1.754-alfa\lib\net46\GridDomain.Transport.dll</HintPath>
     </Reference>
-    <Reference Include="Helios, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Helios.2.1.2\lib\net45\Helios.dll</HintPath>
+    <Reference Include="Helios, Version=2.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Helios.2.1.3\lib\net45\Helios.dll</HintPath>
     </Reference>
     <Reference Include="Hyperion, Version=0.9.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Hyperion.0.9.6\lib\net45\Hyperion.dll</HintPath>
@@ -446,10 +446,10 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AppReadme\Compare-NET-Objects-Help.txt" />
+    <Analyzer Include="..\packages\xunit.analyzers.0.7.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\packages\xunit.analyzers.0.7.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
+    <Content Include="AppReadme\Compare-NET-Objects-Help.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

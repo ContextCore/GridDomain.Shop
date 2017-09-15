@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Shop.Tests.Unit.SkuStockAggregate.Aggregate
 {
-    internal class SkuStock_negative_creation_tests
+    public class SkuStock_negative_creation_tests
     {
         [Fact]
         public async Task When_creating_stock_with_negative_number_error_is_raised()
