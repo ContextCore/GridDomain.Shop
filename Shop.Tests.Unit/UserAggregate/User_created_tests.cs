@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using GridDomain.Tests.Common;
 using Moq;
@@ -36,7 +37,7 @@ namespace Shop.Tests.Unit.UserAggregate
                                .Run().Check();
 
             //Aggregate state 
-            var pendingOrderId = scenario.Aggregate.GetEvent<SkuPurchaseOrdered>().OrderId;
+            var pendingOrderId = scenario.ProducedEvents.OfType<SkuPurchaseOrdered>().First().OrderId;
             var pendingOrder = scenario.Aggregate.PendingOrders[pendingOrderId];
             Assert.Equal(quantity, pendingOrder.Quantity);
             Assert.Equal(skuId, pendingOrder.SkuId);
@@ -54,12 +55,12 @@ namespace Shop.Tests.Unit.UserAggregate
 
 
             var scenario = await NewScenario()
-                               .Given(new UserCreated(userId, "testLogin", account),
-                                      new SkuPurchaseOrdered(userId, skuId, quantity, orderId, _stockId, account))
-                               .When(new CancelPendingOrderCommand(userId, orderId))
-                               .Then(new PendingOrderCanceled(userId, orderId))
-                               .Run()
-                               .Check();
+                                 .Given(new UserCreated(userId, "testLogin", account),
+                                        new SkuPurchaseOrdered(userId, skuId, quantity, orderId, _stockId, account))
+                                 .When(new CancelPendingOrderCommand(userId, orderId))
+                                 .Then(new PendingOrderCanceled(userId, orderId))
+                                 .Run()
+                                 .Check();
 
             //pending order should be removed
             Assert.Empty(scenario.Aggregate.PendingOrders);

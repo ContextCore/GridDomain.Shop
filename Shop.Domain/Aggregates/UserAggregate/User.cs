@@ -16,7 +16,7 @@ namespace Shop.Domain.Aggregates.UserAggregate
             Apply<UserCreated>(e =>
                                {
                                    Login = e.Login;
-                                   Id = e.Id;
+                                   Id = e.SourceId;
                                    Account = e.Account;
                                });
             Apply<SkuPurchaseOrdered>(
