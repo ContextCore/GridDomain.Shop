@@ -16,7 +16,7 @@ namespace Shop.Tests.Unit
             var e = user.GetEvent<UserCreated>();
             user.PersistAll();
             Assert.Equal(e.Account, user.Account);
-            Assert.Equal(e.Id, user.Id);
+            Assert.Equal(e.SourceId, user.Id);
             Assert.Equal(e.Login, user.Login);
         }
     }
