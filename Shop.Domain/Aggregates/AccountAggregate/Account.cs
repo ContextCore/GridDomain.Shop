@@ -12,6 +12,13 @@ namespace Shop.Domain.Aggregates.AccountAggregate
 
         public Account(Guid id, Guid userId, int number) : this(id)
         {
+            Apply<AccountCreated>(e => {
+                                      Id = e.SourceId;
+                                      UserId = e.UserId;
+                                      Number = e.AccountNumber;
+                                  });
+            Apply<AccountReplenish>(e => Amount += e.Amount);
+            Apply<AccountWithdrawal>(e => Amount -= e.Amount);
             Produce(new AccountCreated(id, userId, number));
         }
 
@@ -19,38 +26,18 @@ namespace Shop.Domain.Aggregates.AccountAggregate
         public Money Amount { get; private set; }
         public int Number { get; private set; }
 
-        private void Apply(AccountCreated e)
-        {
-            Id = e.SourceId;
-            UserId = e.UserId;
-            Number = e.AccountNumber;
-        }
-
-        private void Apply(AccountReplenish e)
-        {
-            Amount += e.Amount;
-        }
-
-        private void Apply(AccountWithdrawal e)
-        {
-            Amount -= e.Amount;
-        }
-
         public void Replenish(Money m, Guid replenishSource)
         {
-            GuardNegativeMoney(m, "Cant replenish negative amount of money.");
-            Produce(new AccountReplenish(Id, replenishSource, m));
-        }
-
-        private static void GuardNegativeMoney(Money m, string msg)
-        {
             if (m.IsNegative())
-                throw new NegativeMoneyException(msg);
+                throw new NegativeMoneyException("Cant replenish negative amount of money.");
+            Produce(new AccountReplenish(Id, replenishSource, m));
         }
 
         public void Withdraw(Money m, Guid withdrawSource)
         {
-            GuardNegativeMoney(m, "Cant withdrawal negative amount of money.");
+            if (m.IsNegative())
+                throw new NegativeMoneyException("Cant withdrawal negative amount of money.");
+
             if ((Amount - m).IsNegative())
                 throw new NotEnoughMoneyException("Dont have enough money to pay for bill");
 

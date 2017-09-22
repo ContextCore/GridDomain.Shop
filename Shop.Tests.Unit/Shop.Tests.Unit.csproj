@@ -174,38 +174,38 @@
     <Reference Include="GreenPipes, Version=1.1.0.83, Culture=neutral, PublicKeyToken=b800c4cfcdeea87b, processorArchitecture=MSIL">
       <HintPath>..\packages\GreenPipes.1.0.10\lib\net452\GreenPipes.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Common, Version=2.1.754.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Common.2.1.754-alfa\lib\net46\GridDomain.Common.dll</HintPath>
+    <Reference Include="GridDomain.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Common.2.1.780\lib\net46\GridDomain.Common.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Configuration, Version=2.1.754.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Configuration.2.1.754-alfa\lib\net46\GridDomain.Configuration.dll</HintPath>
+    <Reference Include="GridDomain.Configuration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Configuration.2.1.780\lib\net46\GridDomain.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.CQRS, Version=2.1.754.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.CQRS.2.1.754-alfa\lib\net46\GridDomain.CQRS.dll</HintPath>
+    <Reference Include="GridDomain.CQRS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.CQRS.2.1.780\lib\net46\GridDomain.CQRS.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.EventSourcing, Version=2.1.754.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.EventSourcing.2.1.754-alfa\lib\net46\GridDomain.EventSourcing.dll</HintPath>
+    <Reference Include="GridDomain.EventSourcing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.EventSourcing.2.1.780\lib\net46\GridDomain.EventSourcing.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Node, Version=2.1.754.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Node.2.1.754-alfa\lib\net46\GridDomain.Node.dll</HintPath>
+    <Reference Include="GridDomain.Node, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Node.2.1.780\lib\net46\GridDomain.Node.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.ProcessManagers, Version=2.1.754.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.ProcessManagers.2.1.754-alfa\lib\net46\GridDomain.ProcessManagers.dll</HintPath>
+    <Reference Include="GridDomain.ProcessManagers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.ProcessManagers.2.1.780\lib\net46\GridDomain.ProcessManagers.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Scheduling, Version=2.1.754.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Scheduling.2.1.754-alfa\lib\net46\GridDomain.Scheduling.dll</HintPath>
+    <Reference Include="GridDomain.Scheduling, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Scheduling.2.1.780\lib\net46\GridDomain.Scheduling.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Scheduling.Akka, Version=2.1.754.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Scheduling.Akka.2.1.754-alfa\lib\net46\GridDomain.Scheduling.Akka.dll</HintPath>
+    <Reference Include="GridDomain.Scheduling.Akka, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Scheduling.Akka.2.1.780\lib\net46\GridDomain.Scheduling.Akka.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Tests.Common, Version=2.1.754.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Tests.Common.2.1.754-alfa\lib\net47\GridDomain.Tests.Common.dll</HintPath>
+    <Reference Include="GridDomain.Tests.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Tests.Common.2.1.780\lib\net47\GridDomain.Tests.Common.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Tools, Version=2.1.754.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Tools.2.1.754-alfa\lib\netstandard2.0\GridDomain.Tools.dll</HintPath>
+    <Reference Include="GridDomain.Tools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Tools.2.1.780\lib\net47\GridDomain.Tools.dll</HintPath>
     </Reference>
-    <Reference Include="GridDomain.Transport, Version=2.1.754.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Transport.2.1.754-alfa\lib\net46\GridDomain.Transport.dll</HintPath>
+    <Reference Include="GridDomain.Transport, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridDomain.Transport.2.1.780\lib\net46\GridDomain.Transport.dll</HintPath>
     </Reference>
     <Reference Include="Hyperion, Version=0.9.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Hyperion.0.9.6\lib\net45\Hyperion.dll</HintPath>
@@ -343,6 +343,10 @@
     </Reference>
     <Reference Include="System.Security.Cryptography.X509Certificates">
       <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ValueTuple">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net47\System.ValueTuple.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web" />

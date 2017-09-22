@@ -2,9 +2,13 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/Shop.Web",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "https://localhost:44346",
-      "sslPort": 44346
+      "sslPort": 0
     }
   },
   "profiles": {
@@ -17,7 +21,7 @@
       "applicationUrl": "http://shop.griddomain.local:44321"
     },
     "Shop.Web": {
-      "commandName": "Project",
+      "commandName": "IIS",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
