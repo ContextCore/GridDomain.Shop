@@ -41,6 +41,7 @@
     <Compile Include="AccountAggregate\ProjectionBuilder\Account_projection_tests.cs" />
     <Compile Include="AccountAggregate\ProjectionBuilder\Account_transactions_projection_tests.cs" />
     <Compile Include="BuyNowProcess_tests.cs" />
+    <Compile Include="ContainerTest.cs" />
     <Compile Include="DomainServices\InMemoryPriceCalculator.cs" />
     <Compile Include="InMemory_sequence_provider_tests.cs" />
     <Compile Include="OrderAggregate\Aggregate\Commands\Completed_order_tests.cs" />
@@ -100,6 +101,10 @@
     <Content Include="AppReadme\Compare-NET-Objects-Help.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Shop.Composition\Shop.Composition.csproj">
+      <Project>{B2A45BA3-C914-429E-BCC4-DF1199E6D072}</Project>
+      <Name>Shop.Composition</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shop.Domain\Shop.Domain.csproj">
       <Project>{ee0b4c0c-7368-4316-8c95-410c91b3e683}</Project>
       <Name>Shop.Domain</Name>
@@ -175,37 +180,37 @@
       <HintPath>..\packages\GreenPipes.1.0.10\lib\net452\GreenPipes.dll</HintPath>
     </Reference>
     <Reference Include="GridDomain.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Common.2.1.780\lib\net46\GridDomain.Common.dll</HintPath>
+      <HintPath>..\packages\GridDomain.Common.2.1.781\lib\net46\GridDomain.Common.dll</HintPath>
     </Reference>
     <Reference Include="GridDomain.Configuration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Configuration.2.1.780\lib\net46\GridDomain.Configuration.dll</HintPath>
+      <HintPath>..\packages\GridDomain.Configuration.2.1.781\lib\net46\GridDomain.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="GridDomain.CQRS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.CQRS.2.1.780\lib\net46\GridDomain.CQRS.dll</HintPath>
+      <HintPath>..\packages\GridDomain.CQRS.2.1.781\lib\net46\GridDomain.CQRS.dll</HintPath>
     </Reference>
     <Reference Include="GridDomain.EventSourcing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.EventSourcing.2.1.780\lib\net46\GridDomain.EventSourcing.dll</HintPath>
+      <HintPath>..\packages\GridDomain.EventSourcing.2.1.781\lib\net46\GridDomain.EventSourcing.dll</HintPath>
     </Reference>
     <Reference Include="GridDomain.Node, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Node.2.1.780\lib\net46\GridDomain.Node.dll</HintPath>
+      <HintPath>..\packages\GridDomain.Node.2.1.781\lib\net46\GridDomain.Node.dll</HintPath>
     </Reference>
     <Reference Include="GridDomain.ProcessManagers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.ProcessManagers.2.1.780\lib\net46\GridDomain.ProcessManagers.dll</HintPath>
+      <HintPath>..\packages\GridDomain.ProcessManagers.2.1.781\lib\net46\GridDomain.ProcessManagers.dll</HintPath>
     </Reference>
     <Reference Include="GridDomain.Scheduling, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Scheduling.2.1.780\lib\net46\GridDomain.Scheduling.dll</HintPath>
+      <HintPath>..\packages\GridDomain.Scheduling.2.1.781\lib\net46\GridDomain.Scheduling.dll</HintPath>
     </Reference>
     <Reference Include="GridDomain.Scheduling.Akka, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Scheduling.Akka.2.1.780\lib\net46\GridDomain.Scheduling.Akka.dll</HintPath>
+      <HintPath>..\packages\GridDomain.Scheduling.Akka.2.1.781\lib\net46\GridDomain.Scheduling.Akka.dll</HintPath>
     </Reference>
     <Reference Include="GridDomain.Tests.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Tests.Common.2.1.780\lib\net47\GridDomain.Tests.Common.dll</HintPath>
+      <HintPath>..\packages\GridDomain.Tests.Common.2.1.781\lib\net47\GridDomain.Tests.Common.dll</HintPath>
     </Reference>
     <Reference Include="GridDomain.Tools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Tools.2.1.780\lib\net47\GridDomain.Tools.dll</HintPath>
+      <HintPath>..\packages\GridDomain.Tools.2.1.781\lib\net47\GridDomain.Tools.dll</HintPath>
     </Reference>
     <Reference Include="GridDomain.Transport, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GridDomain.Transport.2.1.780\lib\net46\GridDomain.Transport.dll</HintPath>
+      <HintPath>..\packages\GridDomain.Transport.2.1.781\lib\net46\GridDomain.Transport.dll</HintPath>
     </Reference>
     <Reference Include="Hyperion, Version=0.9.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Hyperion.0.9.6\lib\net45\Hyperion.dll</HintPath>

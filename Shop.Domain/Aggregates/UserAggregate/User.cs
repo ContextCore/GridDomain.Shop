@@ -43,14 +43,14 @@ namespace Shop.Domain.Aggregates.UserAggregate
         public IDictionary<Guid, PendingOrder> PendingOrders { get; } = new Dictionary<Guid, PendingOrder>();
         public Guid Account { get; private set; }
 
-        public void BuyNow(Guid skuId, int quantity, IDefaultStockProvider stockProvider)
+        public void BuyNow(Guid skuId, int quantity, Guid stockId)
         {
              Produce(new SkuPurchaseOrdered(Id,
-                                              skuId,
-                                              quantity,
-                                              Guid.NewGuid(),
-                                              stockProvider.GetStockForSku(skuId),
-                                              Account));
+                                            skuId,
+                                            quantity,
+                                            Guid.NewGuid(),
+                                            stockId,
+                                            Account));
         }
 
         public void CompleteOrder(Guid orderId)

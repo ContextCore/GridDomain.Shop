@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -16,6 +17,9 @@ using Shop.Web.Services;
 
 namespace Shop.Web
 {
+
+    
+
     public class Startup
     {
         public Startup(IHostingEnvironment env)
@@ -42,11 +46,11 @@ namespace Shop.Web
         {
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("ShopIdentity")));
+                                        options.UseSqlServer(Configuration.GetConnectionString("ShopIdentity")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                    .AddDefaultTokenProviders();
 
             services.AddMvc(options =>
                             {
@@ -57,6 +61,13 @@ namespace Shop.Web
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+        }
+        // This method gets called by the runtime. Use this method to configure container.
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            int a=1;
+            builder.RegisterType<AuthMessageSender>().As<IEmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

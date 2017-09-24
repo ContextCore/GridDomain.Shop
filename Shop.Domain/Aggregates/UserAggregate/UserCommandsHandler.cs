@@ -5,13 +5,13 @@ namespace Shop.Domain.Aggregates.UserAggregate
 {
     public class UserCommandsHandler : AggregateCommandsHandler<User>
     {
-        public UserCommandsHandler(IDefaultStockProvider stockProvider)
+        public UserCommandsHandler()
         {
             Map<CreateUserCommand>(c => new User(c.UserId, c.Login, c.AccountId));
 
             Map<CompletePendingOrderCommand>((c, a) => a.CompleteOrder(c.OrderId));
 
-            Map<BuySkuNowCommand>((c, a) => a.BuyNow(c.SkuId, c.Quantity, stockProvider));
+            Map<BuySkuNowCommand>((c, a) => a.BuyNow(c.SkuId, c.Quantity, c.StockId));
 
             Map<CancelPendingOrderCommand>((c, a) => a.CancelOrder(c.OrderId));
         }

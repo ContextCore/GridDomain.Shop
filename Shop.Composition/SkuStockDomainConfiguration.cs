@@ -6,7 +6,6 @@ namespace Shop.Composition {
         public void Register(IDomainBuilder builder)
         {
             builder.RegisterAggregate(DefaultAggregateDependencyFactory.New(new SkuStockCommandsHandler()));
-
         }
     }
 }

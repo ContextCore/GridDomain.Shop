@@ -16,10 +16,7 @@ namespace Shop.Tests.Unit.UserAggregate
 
         private AggregateScenario<User> NewScenario()
         {
-            var stockProviderMoq = new Mock<IDefaultStockProvider>();
-            stockProviderMoq.Setup(p => p.GetStockForSku(It.IsAny<Guid>())).Returns(_stockId);
-
-            return AggregateScenario.New(new UserCommandsHandler(stockProviderMoq.Object));
+            return AggregateScenario.New(new UserCommandsHandler());
         }
 
         [Fact]
@@ -32,7 +29,7 @@ namespace Shop.Tests.Unit.UserAggregate
 
             var scenario = await NewScenario()
                                .Given(new UserCreated(userId, "testLogin", account))
-                               .When(new BuySkuNowCommand(userId, skuId, quantity))
+                               .When(new BuySkuNowCommand(userId, skuId, quantity, _stockId))
                                .Then(new SkuPurchaseOrdered(userId, skuId, 10, Any.GUID, _stockId, account))
                                .Run().Check();
 
