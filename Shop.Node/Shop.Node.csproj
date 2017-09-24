@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Logs\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <None Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="GridDomain.Node" Version="2.1.781" />
     <PackageReference Include="PeterKottas.DotNetCore.WindowsService" Version="2.0.0" />
   </ItemGroup>

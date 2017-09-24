@@ -7,7 +7,6 @@ using Shop.Composition;
 using System.ServiceProcess;
 using PeterKottas.DotNetCore.WindowsService;
 using PeterKottas.DotNetCore.WindowsService.Base;
-using PeterKottas.DotNetCore.WindowsService.Interfaces;
 
 namespace Shop.Node
 {
@@ -26,7 +25,7 @@ namespace Shop.Node
                                                                  {
                                                                      serviceConfig.ServiceFactory((extraArguments, c) =>
                                                                                                   {
-                                                                                                      return new ShopNode(Create());
+                                                                                                      return new ShopNode(CreateGridNode());
                                                                                                   });
                                                                      serviceConfig.OnStart((service, extraArguments) =>
                                                                                            {
@@ -51,45 +50,7 @@ namespace Shop.Node
         }
 
 
-        public class ShopNode : IMicroService
-        {
-            private readonly GridDomainNode _gridDomainNode;
-
-            public ShopNode(GridDomainNode gridDomainNode)
-            {
-                _gridDomainNode = gridDomainNode;
-            }
-            public void Start()
-            {
-                _gridDomainNode.Start().
-                                Wait();
-            }
-
-            public void Stop()
-            {
-                _gridDomainNode.Stop().
-                                Wait();
-            }
-        }
-
-        class ShopNodeDbConfig : DefaultAkkaDbConfiguration
-        {
-            public ShopNodeDbConfig():base("Server = (local); Database = ShopWrite; Integrated Security = true; MultipleActiveResultSets = True")
-            {
-                
-            }
-        }
-
-        class ShopNodeNetworkConfig : IAkkaNetworkAddress
-        {
-            public string SystemName { get; } = "ShopNode";
-            public string Host { get; } = "127.0.0.1";
-            public string PublicHost { get; } = "127.0.0.1";
-            public int PortNumber { get; } = 10001;
-            public bool EnforceIpVersion { get; } = true;
-        }
-
-        private static GridDomainNode Create()
+        private static GridDomainNode CreateGridNode()
         {
             var config = new AkkaConfiguration(new ShopNodeNetworkConfig(), new ShopNodeDbConfig());
             //Allow parameterised configuration here.
