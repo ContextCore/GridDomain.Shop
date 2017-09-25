@@ -4,9 +4,9 @@ namespace Shop.Node {
     class ShopNodeNetworkConfig : IAkkaNetworkAddress
     {
         public string SystemName { get; } = "ShopNode";
-        public string Host { get; } = "127.0.0.1";
-        public string PublicHost { get; } = "127.0.0.1";
-        public int PortNumber { get; } = 10001;
+        public string Host { get; } = "localhost";
+        public string PublicHost { get; } = "localhost";
+        public int PortNumber { get; } = 5001;
         public bool EnforceIpVersion { get; } = true;
     }
 }

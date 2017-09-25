@@ -14,18 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GridDomain.Node" Version="2.1.781" />
+    <PackageReference Include="GridDomain.Node" Version="2.1.783" />
     <PackageReference Include="PeterKottas.DotNetCore.WindowsService" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Shop.Composition\Shop.Composition.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Shop.Node.dll.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

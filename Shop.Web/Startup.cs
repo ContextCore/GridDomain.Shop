@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
+using GridDomain.CQRS;
+using GridDomain.Node;
+using GridDomain.Node.Configuration.Akka;
+using GridDomain.Tools.Connector;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -66,8 +70,9 @@ namespace Shop.Web
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            int a=1;
-            builder.RegisterType<AuthMessageSender>().As<IEmailSender>();
+            var node = ConnectToNode();
+            builder.RegisterInstance(node).As<IGridDomainNode>();
+            builder.RegisterInstance(node).As<ICommandExecutor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -99,6 +104,21 @@ namespace Shop.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        class ShopNodeAddress : IAkkaNetworkAddress
+        {
+            public string SystemName { get; } = "shop_console";
+            public string Host { get; } = "localhost";
+            public string PublicHost { get; } = "localhost";
+            public int PortNumber { get; } = 5001;
+            public bool EnforceIpVersion { get; } = true;
+        }
+        private IGridDomainNode ConnectToNode()
+        {
+            var connector = new GridNodeConnector(new ShopNodeAddress());
+            connector.Connect().Wait();
+            return connector;
         }
     }
 }
