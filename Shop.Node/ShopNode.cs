@@ -1,5 +1,7 @@
 ﻿using GridDomain.Node;
+using PeterKottas.DotNetCore.WindowsService.Base;
 using PeterKottas.DotNetCore.WindowsService.Interfaces;
+using Serilog;
 
 namespace Shop.Node {
     public class ShopNode : IMicroService
@@ -12,14 +14,14 @@ namespace Shop.Node {
         }
         public void Start()
         {
-            _gridDomainNode.Start().
-                            Wait();
+            _gridDomainNode.Start().Wait();
+            //StartBase();
+           // Timers.Start("heartbeat",1000,()=> Log.Information("heartbeat"));
         }
 
         public void Stop()
         {
-            _gridDomainNode.Stop().
-                            Wait();
+            _gridDomainNode.Stop().Wait();
         }
     }
 }

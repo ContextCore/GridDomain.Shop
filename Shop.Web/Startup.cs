@@ -6,13 +6,13 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using GridDomain.CQRS;
 using GridDomain.Node;
-using GridDomain.Node.Configuration.Akka;
 using GridDomain.Tools.Connector;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 
 namespace Shop.Web
 {
@@ -71,17 +71,14 @@ namespace Shop.Web
         
         private IGridDomainNode ConnectToNode()
         {
-            var connector = new GridNodeConnector(new ShopNodeAddress());
-            connector.Connect().Wait();
+            var address = new ShopNodeAddress();
+            var connector = new GridNodeConnector(address,null,TimeSpan.FromMinutes(1));
+            Log.Information("started connect to griddomain node at {@address}", address);
+
+            //for exception propagation without AggregatException wrapper
+            connector.Connect()
+                     .ContinueWith(t => Log.Information("Connected to griddomain node at {@address}", address));
             return connector;
         }
-    }
-    class ShopNodeAddress : IAkkaNetworkAddress
-    {
-        public string SystemName { get; } = "shop_console";
-        public string Host { get; } = "localhost";
-        public string PublicHost { get; } = "localhost";
-        public int PortNumber { get; } = 5001;
-        public bool EnforceIpVersion { get; } = true;
     }
 }

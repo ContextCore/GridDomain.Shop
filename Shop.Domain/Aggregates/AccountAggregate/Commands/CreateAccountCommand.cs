@@ -5,7 +5,7 @@ namespace Shop.Domain.Aggregates.AccountAggregate.Commands
 {
     public class CreateAccountCommand : Command
     {
-        public CreateAccountCommand(Guid accountId, Guid userId, int number) : base(accountId)
+        public CreateAccountCommand(Guid accountId, Guid userId, long number) : base(accountId)
         {
             UserId = userId;
             Number = number;
@@ -13,6 +13,6 @@ namespace Shop.Domain.Aggregates.AccountAggregate.Commands
 
         public Guid AccountId => AggregateId;
         public Guid UserId { get; }
-        public int Number { get; }
+        public long Number { get; }
     }
 }

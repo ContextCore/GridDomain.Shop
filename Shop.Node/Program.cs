@@ -5,6 +5,7 @@ using GridDomain.Node.Configuration.Akka;
 using GridDomain.Node.Configuration.Composition;
 using Shop.Composition;
 using System.ServiceProcess;
+using System.Threading.Tasks;
 using PeterKottas.DotNetCore.WindowsService;
 using PeterKottas.DotNetCore.WindowsService.Base;
 using Serilog;
@@ -19,6 +20,7 @@ namespace Shop.Node
         /// </summary>
         public static void Main()
         {
+            Log.Logger = new ShopLogConfiguration().CreateLogger();
             ServiceRunner<ShopNode>.Run(config =>
                                               {
                                                   var name = config.GetDefaultName();
@@ -47,8 +49,9 @@ namespace Shop.Node
                                                                                            });
                                                                  });
                                               });
-            Console.WriteLine("Press any key to exit");
-            Console.ReadKey();
+
+            Console.WriteLine("Press any key and enter to exit");
+            Console.ReadLine();
         }
 
         
@@ -56,7 +59,7 @@ namespace Shop.Node
         {
             var config = new AkkaConfiguration(new ShopNodeNetworkConfig(), new ShopNodeDbConfig());
             //Allow parameterised configuration here.
-            var settings = new NodeSettings(() => config.CreateSystem()) {Log = new ShopLogConfiguration().CreateLogger()};
+            var settings = new NodeSettings(() => config.CreateSystem()) {Log = Log.Logger};
             settings.Add(new ShopDomainConfiguration());
             Console.WriteLine($"Created shop node at {config.Network.Host} on port {config.Network.PortNumber}");
             return new GridDomainNode(settings);
@@ -65,7 +68,7 @@ namespace Shop.Node
 
     class ShopLogConfiguration : DefaultLoggerConfiguration
     {
-        public ShopLogConfiguration():base(LogEventLevel.Debug)
+        public ShopLogConfiguration()
         {
             WriteTo.Console();
         }
