@@ -7,6 +7,8 @@ using Shop.Composition;
 using System.ServiceProcess;
 using PeterKottas.DotNetCore.WindowsService;
 using PeterKottas.DotNetCore.WindowsService.Base;
+using Serilog;
+using Serilog.Events;
 
 namespace Shop.Node
 {
@@ -49,15 +51,23 @@ namespace Shop.Node
             Console.ReadKey();
         }
 
-
+        
         private static GridDomainNode CreateGridNode()
         {
             var config = new AkkaConfiguration(new ShopNodeNetworkConfig(), new ShopNodeDbConfig());
             //Allow parameterised configuration here.
-            var settings = new NodeSettings(()=>config.CreateSystem());
+            var settings = new NodeSettings(() => config.CreateSystem()) {Log = new ShopLogConfiguration().CreateLogger()};
             settings.Add(new ShopDomainConfiguration());
             Console.WriteLine($"Created shop node at {config.Network.Host} on port {config.Network.PortNumber}");
             return new GridDomainNode(settings);
+        }
+    }
+
+    class ShopLogConfiguration : DefaultLoggerConfiguration
+    {
+        public ShopLogConfiguration():base(LogEventLevel.Debug)
+        {
+            WriteTo.Console();
         }
     }
 }

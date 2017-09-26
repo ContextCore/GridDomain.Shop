@@ -2,13 +2,9 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
-    "iis": {
-      "applicationUrl": "http://localhost/Shop.Web",
-      "sslPort": 0
-    },
     "iisExpress": {
-      "applicationUrl": "https://localhost:44348",
-      "sslPort": 44348
+      "applicationUrl": "http://localhost:44342/",
+      "sslPort": 44342
     }
   },
   "profiles": {
@@ -17,16 +13,15 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://shop.griddomain.local:44321"
+      }
     },
-    "Shop.Web": {
-      "commandName": "IIS",
+    "Shop.WebA": {
+      "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://shop.griddomain.local:44321"
+      "applicationUrl": "http://localhost:43934/"
     }
   }
 }
