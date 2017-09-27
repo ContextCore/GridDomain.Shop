@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using GridDomain.CQRS;
@@ -8,12 +7,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Shop.Domain.Aggregates.AccountAggregate.Commands;
 using Shop.Infrastructure;
+using Shop.Web.Controllers;
 using Shop.Web.Identity;
 using Shop.Web.Identity.ViewModels;
 
-namespace Shop.Web.Controllers
-{
-    [Route("api/[controller]")]
+[Route("api/[controller]")]
     public class AccountController : Controller
     {
         private readonly ICommandExecutor _commandBus;
@@ -51,9 +49,8 @@ namespace Shop.Web.Controllers
             var userIdentity = _mapper.Map<AppUser>(model);
             var result = await _userManager.CreateAsync(userIdentity, model.Password);
 
-            if(!result.Succeeded) 
-                        foreach(var e in result.Errors)
-                            ModelState.TryAddModelError(e.Code, e.Description);
+            if (!result.Succeeded)
+                Errors.AddErrorsToModelState(result, ModelState);
 
             await _appDbContext.SaveChangesAsync();
 
@@ -61,4 +58,3 @@ namespace Shop.Web.Controllers
         }
 
     }
-}

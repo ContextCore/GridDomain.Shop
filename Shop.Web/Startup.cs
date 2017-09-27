@@ -1,26 +1,103 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using Shop.Web.Identity;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Shop.Web
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            Environment = env;
         }
 
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment Environment { get; }
 
-  
+        public void ConfigureServices(IServiceCollection s)
+        {
+            s.AddAutofac();
+            s.AddMvc();
+            s.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Shop API", Version = "v1" });
+            });
+            s.AddIdentity<AppUser, IdentityRole>
+                    (o =>
+                    {
+                                                                                 // configure identity options
+                                                                                 o.Password.RequireDigit = false;
+                        o.Password.RequireLowercase = false;
+                        o.Password.RequireUppercase = false;
+                        o.Password.RequireNonAlphanumeric = false;
+                        o.Password.RequiredLength = 6;
+                    })
+                    .AddEntityFrameworkStores<ShopIdentityDbContext>()
+                    .AddDefaultTokenProviders();
+
+            s.AddAutoMapper();
+
+            var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidIssuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)],
+
+                ValidateAudience = true,
+                ValidAudience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)],
+
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = CompositionRoot.SigningKey,
+
+                RequireExpirationTime = false,
+                ValidateLifetime = false,
+                ClockSkew = TimeSpan.Zero
+            };
+
+            s.AddAuthentication(options =>
+                                {
+                                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                                })
+             .AddJwtBearer(o =>
+                           {
+                               o.TokenValidationParameters = tokenValidationParameters;
+                               o.Events = new JwtBearerEvents()
+                                          {
+                                              OnAuthenticationFailed = c =>
+                                                                       {
+                                                                           c.NoResult();
+
+                                                                           c.Response.StatusCode = 500;
+                                                                           c.Response.ContentType = "text/plain";
+                                                                           if(Environment.IsDevelopment())
+                                                                           {
+                                                                               // Debug only, in production do not share exceptions with the remote host.
+                                                                               return c.Response.WriteAsync(c.Exception.ToString());
+                                                                           }
+                                                                           return c.Response.WriteAsync("An error occurred processing your authentication.");
+                                                                       }
+                                          };
+                           });
+
+        }
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
@@ -51,6 +128,7 @@ namespace Shop.Web
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
+
         }
 
         public void ConfigureContainer(ContainerBuilder builder)

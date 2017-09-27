@@ -46,32 +46,11 @@ namespace Shop.Web
 
         public static IWebHost BuildWebHost(string[] args) =>
                                        WebHost.CreateDefaultBuilder(args)
-                                              .ConfigureServices(s =>
-                                                                 {
-                                                                     s.AddAutofac();
-                                                                     s.AddMvc();
-                                                                     s.AddSwaggerGen(c =>
-                                                                                     {
-                                                                                         c.SwaggerDoc("v1", new Info { Title = "Shop API", Version = "v1" });
-                                                                                   });
-                                                                     s.AddIdentity<AppUser, IdentityRole>
-                                                                             (o =>
-                                                                              {
-                                                                                  // configure identity options
-                                                                                  o.Password.RequireDigit = false;
-                                                                                  o.Password.RequireLowercase = false;
-                                                                                  o.Password.RequireUppercase = false;
-                                                                                  o.Password.RequireNonAlphanumeric = false;
-                                                                                  o.Password.RequiredLength = 6;
-                                                                              })
-                                                                             .AddEntityFrameworkStores<ShopIdentityDbContext>()
-                                                                             .AddDefaultTokenProviders();
-
-                                                                     s.AddAutoMapper();
-                                                                 })
                                               .UseStartup<Startup>()
                                               .UseKestrel()
                                               .UseSerilog()
                                               .Build();
     }
+
+ 
 }
