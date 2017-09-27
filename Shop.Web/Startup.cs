@@ -1,18 +1,13 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using GridDomain.CQRS;
-using GridDomain.Node;
-using GridDomain.Tools.Connector;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Serilog;
 
 namespace Shop.Web
 {
@@ -60,22 +55,10 @@ namespace Shop.Web
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            var node = ConnectToNode();
-            builder.RegisterInstance(node).As<IGridDomainNode>();
-            builder.RegisterInstance(node).As<ICommandExecutor>();
+            CompositionRoot.Configure(builder, Configuration);
         }
 
         
-        private IGridDomainNode ConnectToNode()
-        {
-            var address = new ShopNodeAddress();
-            var connector = new GridNodeConnector(address,null,TimeSpan.FromMinutes(1));
-            Log.Information("started connect to griddomain node at {@address}", address);
-
-            //for exception propagation without AggregatException wrapper
-            connector.Connect()
-                     .ContinueWith(t => Log.Information("Connected to griddomain node at {@address}", address));
-            return connector;
-        }
+       
     }
 }

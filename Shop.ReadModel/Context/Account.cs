@@ -5,7 +5,7 @@ namespace Shop.ReadModel.Context
     public class Account
     {
         public Guid Id { get; set; }
-        public int Number { get; set; }
+        public long Number { get; set; }
         public Guid UserId { get; set; }
         public string Login { get; set; }
         public DateTime Created { get; set; }
