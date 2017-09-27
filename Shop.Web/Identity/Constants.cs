@@ -12,6 +12,12 @@
             {
                 public const string ApiAccess = "api_access";
             }
+
+            public static class AccessPolicy
+            {
+                public const string ApiUser = "api_user";
+
+            }
         }
     }
 }

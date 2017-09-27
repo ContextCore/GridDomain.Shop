@@ -35,6 +35,7 @@ namespace Shop.Web
             s.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Shop API", Version = "v1" });
+                c.AddSecurityDefinition("JWT",new OAuth2Scheme());
             });
             s.AddIdentity<AppUser, IdentityRole>
                     (o =>
@@ -53,7 +54,7 @@ namespace Shop.Web
             // api user claim policy
             s.AddAuthorization(options =>
                                       {
-                                          options.AddPolicy("ApiUser", policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
+                                          options.AddPolicy(Constants.Strings.AccessPolicy.ApiUser, policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
                                       });
 
             var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
