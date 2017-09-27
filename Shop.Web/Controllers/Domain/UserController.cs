@@ -1,7 +1,7 @@
 using GridDomain.CQRS;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Shop.Web.Controllers {
+namespace Shop.Web.Controllers.Domain {
     public class UserController : Controller
     {
         private readonly ICommandExecutor _commandBus;

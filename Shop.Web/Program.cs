@@ -1,10 +1,13 @@
 using System;
 using Autofac.Extensions.DependencyInjection;
+using AutoMapper;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;
+using Shop.Web.Identity;
 using Swashbuckle.AspNetCore.Swagger;
 using ILogger = Serilog.ILogger;
 
@@ -51,6 +54,20 @@ namespace Shop.Web
                                                                                      {
                                                                                          c.SwaggerDoc("v1", new Info { Title = "Shop API", Version = "v1" });
                                                                                    });
+                                                                     s.AddIdentity<AppUser, IdentityRole>
+                                                                             (o =>
+                                                                              {
+                                                                                  // configure identity options
+                                                                                  o.Password.RequireDigit = false;
+                                                                                  o.Password.RequireLowercase = false;
+                                                                                  o.Password.RequireUppercase = false;
+                                                                                  o.Password.RequireNonAlphanumeric = false;
+                                                                                  o.Password.RequiredLength = 6;
+                                                                              })
+                                                                             .AddEntityFrameworkStores<ShopIdentityDbContext>()
+                                                                             .AddDefaultTokenProviders();
+
+                                                                     s.AddAutoMapper();
                                                                  })
                                               .UseStartup<Startup>()
                                               .UseKestrel()

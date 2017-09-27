@@ -19,8 +19,9 @@ namespace Shop.Web {
             builder.RegisterInstance(node).As<ICommandExecutor>();
 
             var options = new DbContextOptionsBuilder<ShopIdentityDbContext>().UseSqlServer(configuration.GetConnectionString("ShopIdentity")).Options;
-            builder.Register(c => new ShopIdentityDbContext(options));
+            builder.Register(c => new ShopIdentityDbContext(options)).InstancePerLifetimeScope();
 
+          
             //AddDbContext<ApplicationDbContext>(options =>
             //                                            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
             //                                                                 b => b.MigrationsAssembly("DotNetGigs")));

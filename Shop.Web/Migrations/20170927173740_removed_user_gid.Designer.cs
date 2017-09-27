@@ -11,9 +11,10 @@ using System;
 namespace Shop.Web.Migrations
 {
     [DbContext(typeof(ShopIdentityDbContext))]
-    partial class ShopIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170927173740_removed_user_gid")]
+    partial class removed_user_gid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -13,6 +13,5 @@ namespace Shop.Web.Identity
         // Extended Properties
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public Guid Gid { get; set; }
     }
 }

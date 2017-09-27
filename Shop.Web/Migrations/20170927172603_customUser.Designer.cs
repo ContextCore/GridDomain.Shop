@@ -11,9 +11,10 @@ using System;
 namespace Shop.Web.Migrations
 {
     [DbContext(typeof(ShopIdentityDbContext))]
-    partial class ShopIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170927172603_customUser")]
+    partial class customUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,6 +145,8 @@ namespace Shop.Web.Migrations
                     b.Property<bool>("EmailConfirmed");
 
                     b.Property<string>("FirstName");
+
+                    b.Property<Guid>("Gid");
 
                     b.Property<string>("LastName");
 
