@@ -1,16 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Akka.Event;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;
+using Swashbuckle.AspNetCore.Swagger;
 using ILogger = Serilog.ILogger;
 
 namespace Shop.Web
@@ -48,7 +43,15 @@ namespace Shop.Web
 
         public static IWebHost BuildWebHost(string[] args) =>
                                        WebHost.CreateDefaultBuilder(args)
-                                              .ConfigureServices(s => s.AddAutofac())
+                                              .ConfigureServices(s =>
+                                                                 {
+                                                                     s.AddAutofac();
+                                                                     s.AddMvc();
+                                                                     s.AddSwaggerGen(c =>
+                                                                                     {
+                                                                                         c.SwaggerDoc("v1", new Info { Title = "Shop API", Version = "v1" });
+                                                                                   });
+                                                                 })
                                               .UseStartup<Startup>()
                                               .UseKestrel()
                                               .UseSerilog()

@@ -20,6 +20,7 @@ namespace Shop.Web.Controllers
             _commandBus = commandBus;
         }
 
+        [HttpPost]
         public async Task<Guid> Create()
         {
             var accountId = Guid.NewGuid();

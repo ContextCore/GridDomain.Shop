@@ -10,7 +10,7 @@ namespace Shop.Domain.Aggregates.AccountAggregate
     {
         private Account(Guid id) : base(id) {}
 
-        public Account(Guid id, Guid userId, int number) : this(id)
+        public Account(Guid id, Guid userId, long number) : this(id)
         {
             Apply<AccountCreated>(e => {
                                       Id = e.SourceId;
@@ -24,7 +24,7 @@ namespace Shop.Domain.Aggregates.AccountAggregate
 
         public Guid UserId { get; private set; }
         public Money Amount { get; private set; }
-        public int Number { get; private set; }
+        public long Number { get; private set; }
 
         public void Replenish(Money m, Guid replenishSource)
         {
