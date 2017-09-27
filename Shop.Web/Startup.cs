@@ -32,8 +32,6 @@ namespace Shop.Web
 
         public void ConfigureServices(IServiceCollection s)
         {
-            s.AddAutofac();
-            s.AddMvc();
             s.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Shop API", Version = "v1" });
@@ -52,8 +50,24 @@ namespace Shop.Web
                     .AddDefaultTokenProviders();
 
             s.AddAutoMapper();
+            // api user claim policy
+            s.AddAuthorization(options =>
+                                      {
+                                          options.AddPolicy("ApiUser", policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
+                                      });
 
             var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
+
+
+        //    s.Configure<JwtIssuerOptions>(options => jwtAppSettingOptions.Bind(options));
+            s.Configure<JwtIssuerOptions>(options =>
+                                                 {
+                                                     options.Issuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)];
+                                                     options.Audience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)];
+                                                     options.SigningCredentials = new SigningCredentials(CompositionRoot.SigningKey, SecurityAlgorithms.HmacSha256);
+                                                 });
+
+
             var tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = true,

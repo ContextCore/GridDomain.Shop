@@ -38,9 +38,8 @@ namespace Shop.Web {
                                                      Audience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)],
                                                      SigningCredentials = new SigningCredentials(SigningKey, SecurityAlgorithms.HmacSha256)
                                                  });
-            //AddDbContext<ApplicationDbContext>(options =>
-            //                                            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-            //                                                                 b => b.MigrationsAssembly("DotNetGigs")));
+
+            builder.RegisterType<JwtFactory>().As<IJwtFactory>().ExternallyOwned();
         }
 
         private static IGridDomainNode ConnectToNode()

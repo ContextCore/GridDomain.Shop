@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;
@@ -46,6 +47,11 @@ namespace Shop.Web
 
         public static IWebHost BuildWebHost(string[] args) =>
                                        WebHost.CreateDefaultBuilder(args)
+                                              .ConfigureServices(s =>
+                                                                 {
+                                                                     s.AddMvc();
+                                                                     s.AddAutofac();
+                                                                 })
                                               .UseStartup<Startup>()
                                               .UseKestrel()
                                               .UseSerilog()
