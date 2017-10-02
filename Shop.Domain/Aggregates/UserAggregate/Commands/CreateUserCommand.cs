@@ -3,7 +3,7 @@ using GridDomain.CQRS;
 
 namespace Shop.Domain.Aggregates.UserAggregate.Commands
 {
-    internal class CreateUserCommand : Command
+    public class CreateUserCommand : Command
     {
         public CreateUserCommand(Guid userId, string login, Guid accountId) : base(userId)
         {

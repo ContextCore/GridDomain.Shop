@@ -8,7 +8,7 @@ using Shop.Web.Identity;
 
 namespace Shop.Web.Controllers
 {
-    [Authorize(Policy = Constants.Strings.AccessPolicy.ApiUser)]
+    //[Authorize(Policy = Constants.Strings.AccessPolicy.ApiUser)]
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {

@@ -27,13 +27,12 @@ namespace Shop.Infrastructure
         {
             lock (_lock)
             {
-                Func<long> sequenceGenerator;
                 sequenceName = sequenceName ?? DefaultCollectionName;
-                if (!_sequences.TryGetValue(sequenceName, out sequenceGenerator))
-                {
-                    CreateNewSequence(sequenceName);
-                    sequenceGenerator = _sequences[sequenceName] = () => GetNextFromSqlSequence(sequenceName);
-                }
+                if (_sequences.TryGetValue(sequenceName, out var sequenceGenerator))
+                    return sequenceGenerator();
+
+                CreateNewSequence(sequenceName);
+                sequenceGenerator = _sequences[sequenceName] = () => GetNextFromSqlSequence(sequenceName);
 
                 return sequenceGenerator();
             }

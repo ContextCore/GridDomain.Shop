@@ -1,14 +1,17 @@
 using System;
 using System.Configuration;
 using System.Text;
+using System.Threading.Tasks;
 using Autofac;
 using GridDomain.CQRS;
 using GridDomain.Node;
+using GridDomain.Node.Configuration.Akka;
 using GridDomain.Tools.Connector;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using Shop.Infrastructure;
 using Shop.Web.Identity;
 
 namespace Shop.Web {
@@ -20,8 +23,12 @@ namespace Shop.Web {
         public static void Configure(ContainerBuilder builder, IConfiguration configuration)
         {
             var node = ConnectToNode();
-            builder.RegisterInstance(node).As<IGridDomainNode>();
             builder.RegisterInstance(node).As<ICommandExecutor>();
+
+           var sequenceProvider = new SqlSequenceProvider("Server = (local); Database = ShopRead; Integrated Security = true; MultipleActiveResultSets = True");
+            sequenceProvider.Connect();
+
+            builder.RegisterInstance(sequenceProvider).As<ISequenceProvider>();
 
             var options = new DbContextOptionsBuilder<ShopIdentityDbContext>().UseSqlServer(configuration.GetConnectionString("ShopIdentity")).Options;
             builder.Register(c => new ShopIdentityDbContext(options)).InstancePerLifetimeScope();
@@ -45,12 +52,11 @@ namespace Shop.Web {
         private static IGridDomainNode ConnectToNode()
         {
             var address = new ShopNodeAddress();
-            var connector = new GridNodeConnector(address, null, TimeSpan.FromMinutes(1));
+            var connector = new GridNodeConnector(address);
             Log.Information("started connect to griddomain node at {@address}", address);
-
-            //for exception propagation without AggregatException wrapper
             connector.Connect()
-                     .ContinueWith(t => Log.Information("Connected to griddomain node at {@address}", address));
+                     .ContinueWith(t => Log.Information("Connected to griddomain node at {@address}", address),
+                                        TaskContinuationOptions.OnlyOnRanToCompletion);
             return connector;
         }
     }

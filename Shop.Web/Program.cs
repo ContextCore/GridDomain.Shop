@@ -37,10 +37,10 @@ namespace Shop.Web
 
         private static ILogger InitLogger()
         {
-            return Log.Logger = new LoggerConfiguration().MinimumLevel.Debug()
+            return Log.Logger = new LoggerConfiguration().MinimumLevel.Verbose()
                                                          .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                                                          .Enrich.FromLogContext()
-                                                         .WriteTo.RollingFile(".\\Logs\\log_{HalfHour}.txt")
+                                                         .WriteTo.RollingFile(".\\ShopWeb.Logs\\log_{HalfHour}.txt")
                                                          .WriteTo.Console()
                                                          .CreateLogger();
         }

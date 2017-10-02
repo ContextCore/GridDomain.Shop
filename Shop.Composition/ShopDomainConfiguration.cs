@@ -22,12 +22,12 @@ namespace Shop.Composition {
     }
     public class ShopDomainConfiguration : IDomainConfiguration
     {
+        public const string ShopReadDbConnectionString = "Server = (local); Database = ShopRead; Integrated Security = true; MultipleActiveResultSets = True";
         private readonly DbContextOptions<ShopDbContext> _readModelContextOptions;
         private readonly string _dbConnectionString;
         private readonly IContainer _container;
 
-        public ShopDomainConfiguration() : this(
-            "Server = (local); Database = ShopRead; Integrated Security = true; MultipleActiveResultSets = True")
+        public ShopDomainConfiguration() : this(ShopReadDbConnectionString)
         {
             
         }

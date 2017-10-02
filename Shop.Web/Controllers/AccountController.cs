@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Shop.Domain.Aggregates.AccountAggregate.Commands;
 using Shop.Infrastructure;
-using Shop.Web.Controllers;
 using Shop.Web.Identity;
 using Shop.Web.Identity.ViewModels;
 
-[Route("api/[controller]")]
+namespace Shop.Web.Controllers
+{
+    [ApiRoute]
     public class AccountController : Controller
     {
         private readonly ICommandExecutor _commandBus;
@@ -28,15 +29,15 @@ using Shop.Web.Identity.ViewModels;
             _commandBus = commandBus;
         }
 
-      // [HttpPost]
-      // public async Task<Guid> Create()
-      // {
-      //     var accountId = Guid.NewGuid();
-      //     var userId = Guid.NewGuid(); //TODO: get current user id
-      //     var accountNumber = _serviceProvider.GetNext(AccountSequence);
-      //     await _commandBus.Execute(new CreateAccountCommand(accountId, userId, accountNumber));
-      //     return accountId;
-      // }
+        // [HttpPost]
+        // public async Task<Guid> Create()
+        // {
+        //     var accountId = Guid.NewGuid();
+        //     var userId = Guid.NewGuid(); //TODO: get current user id
+        //     var accountNumber = _serviceProvider.GetNext(AccountSequence);
+        //     await _commandBus.Execute(new CreateAccountCommand(accountId, userId, accountNumber));
+        //     return accountId;
+        // }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]RegistrationViewModel model)
@@ -58,3 +59,4 @@ using Shop.Web.Identity.ViewModels;
         }
 
     }
+}
