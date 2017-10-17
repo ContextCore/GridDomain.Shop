@@ -6,11 +6,9 @@ using Shop.Domain.Aggregates.AccountAggregate.Events;
 
 namespace Shop.Domain.Aggregates.AccountAggregate
 {
-    public class Account : Aggregate
+    public class Account : ConventionAggregate
     {
-        private Account(Guid id) : base(id) {}
-
-        public Account(Guid id, Guid userId, long number) : this(id)
+        private Account(Guid id) : base(id)
         {
             Apply<AccountCreated>(e => {
                                       Id = e.SourceId;
@@ -19,6 +17,10 @@ namespace Shop.Domain.Aggregates.AccountAggregate
                                   });
             Apply<AccountReplenish>(e => Amount += e.Amount);
             Apply<AccountWithdrawal>(e => Amount -= e.Amount);
+        }
+
+        public Account(Guid id, Guid userId, long number) : this(id)
+        {
             Produce(new AccountCreated(id, userId, number));
         }
 

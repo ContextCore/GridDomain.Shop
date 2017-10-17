@@ -5,7 +5,7 @@ using Shop.Domain.Aggregates.SkuAggregate.Events;
 
 namespace Shop.Domain.Aggregates.SkuAggregate
 {
-    public class Sku : Aggregate
+    public class Sku : ConventionAggregate
     {
         private Sku(Guid id) : base(id)
         {

@@ -7,7 +7,7 @@ using Shop.Domain.Aggregates.UserAggregate.Events;
 
 namespace Shop.Domain.Aggregates.UserAggregate
 {
-    public class User : Aggregate
+    public class User : ConventionAggregate
     {
         private readonly ILogger _logger = Log.Logger.ForContext<User>();
 

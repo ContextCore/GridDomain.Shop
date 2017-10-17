@@ -17,11 +17,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GridDomain.Common" Version="2.1.783" />
-    <PackageReference Include="GridDomain.CQRS" Version="2.1.783" />
-    <PackageReference Include="GridDomain.EventSourcing" Version="2.1.783" />
-    <PackageReference Include="GridDomain.ProcessManagers" Version="2.1.783" />
-    <PackageReference Include="GridDomain.Scheduling" Version="2.1.783" />
+    <PackageReference Include="GridDomain.Common" Version="2.1.888-alfa" />
+    <PackageReference Include="GridDomain.CQRS" Version="2.1.888-alfa" />
+    <PackageReference Include="GridDomain.EventSourcing" Version="2.1.888-alfa" />
+    <PackageReference Include="GridDomain.ProcessManagers" Version="2.1.888-alfa" />
+    <PackageReference Include="GridDomain.Scheduling" Version="2.1.888-alfa" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="2.0.0-preview1-final" />

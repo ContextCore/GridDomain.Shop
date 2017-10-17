@@ -18,7 +18,7 @@ namespace Shop.Tests.Unit.AccountAggregate
     {
         public Account_hydration_tests()
         {
-            Account = Aggregate.Empty<Account>();
+            Account = AggregateFactory.BuildEmpty<Account>();
             _created = Account.ApplyEvent(new Fixture().Create<AccountCreated>());
             _initialAmountEvent = Account.ApplyEvent(new AccountReplenish(_created.SourceId, Guid.NewGuid(), new Money(100)));
         }

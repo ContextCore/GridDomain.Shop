@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Autofac;
 using GridDomain.CQRS;
 using GridDomain.Node;
-using GridDomain.Node.Configuration.Akka;
+using GridDomain.Node.Configuration;
 using GridDomain.Tools.Connector;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -52,7 +52,7 @@ namespace Shop.Web {
         private static IGridDomainNode ConnectToNode()
         {
             var address = new ShopNodeAddress();
-            var connector = new GridNodeConnector(address);
+            var connector = new GridNodeConnector(new NodeConfiguration("ShopNode", new ShopNodeAddress()));
             Log.Information("started connect to griddomain node at {@address}", address);
             connector.Connect()
                      .ContinueWith(t => Log.Information("Connected to griddomain node at {@address}", address),

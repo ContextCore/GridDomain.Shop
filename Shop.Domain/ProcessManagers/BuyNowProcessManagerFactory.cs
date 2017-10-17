@@ -7,26 +7,15 @@ using Shop.Domain.DomainServices.PriceCalculator;
 
 namespace Shop.Domain.ProcessManagers
 {
-    public class BuyNowProcessManagerFactory : IProcessManagerCreator<BuyNowState>,
-                                     IProcessManagerCreator<BuyNowState,SkuPurchaseOrdered>
+    public class BuyNowProcessStateFactory : IProcessStateFactory<BuyNowState>
     {
-        private readonly ILogger _log;
-        private readonly IPriceCalculator _priceCalculator;
-
-        public BuyNowProcessManagerFactory(IPriceCalculator priceCalculator, ILogger log)
+        public BuyNowState Create(object message, BuyNowState state)
         {
-            _log = log;
-            _priceCalculator = priceCalculator;
-        }
-
-        public IProcessManager<BuyNowState> Create(BuyNowState state)
-        {
-            return new ProcessManager<BuyNowState>(new BuyNow(_priceCalculator),state, _log);
-        }
-
-        public IProcessManager<BuyNowState> CreateNew(SkuPurchaseOrdered message, Guid? processId = null)
-        {
-            return Create(new BuyNowState(processId ?? Guid.NewGuid(), nameof(BuyNow.Initial)));
+            switch (message)
+            {
+                case SkuPurchaseOrdered e: return new BuyNowState(Guid.NewGuid(), nameof(BuyNow.Initial));
+            }
+            return state;
         }
     }
 }

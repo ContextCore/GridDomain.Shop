@@ -11,7 +11,7 @@ using Shop.Domain.Aggregates.UserAggregate;
 namespace Shop.Domain.Aggregates.OrderAggregate
 {
     // users can buy goods by creating orders paid from accounts
-    public class Order : Aggregate
+    public class Order : ConventionAggregate
     {
         private Order(Guid id) : base(id)
         {

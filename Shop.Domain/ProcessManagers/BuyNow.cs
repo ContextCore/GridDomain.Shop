@@ -13,10 +13,8 @@ using Shop.Domain.DomainServices.PriceCalculator;
 
 namespace Shop.Domain.ProcessManagers
 {
-    public class BuyNow : Process<BuyNowState>
+    public class BuyNow : ConventionProcess<BuyNowState>
     {
-        public static readonly IProcessManagerDescriptor Descriptor = CreateDescriptor();
-
         public BuyNow(IPriceCalculator calculator)
         {
             CompositeEvent(() => OrderWasReserved, x => x.OrderWarReservedStatus, OrderFinalized, StockReserved);
@@ -91,22 +89,5 @@ namespace Shop.Domain.ProcessManagers
         public State Paying { get; private set; }
         public State TakingStock { get; private set; }
 
-        private static ProcessManagerDescriptor CreateDescriptor()
-        {
-            var descriptor = ProcessManagerDescriptor.CreateDescriptor<BuyNow, BuyNowState>();
-
-            descriptor.AddStartMessage<SkuPurchaseOrdered>();
-
-            descriptor.AddCommand<CreateOrderCommand>();
-            descriptor.AddCommand<AddItemToOrderCommand>();
-            descriptor.AddCommand<ReserveStockCommand>();
-            descriptor.AddCommand<CalculateOrderTotalCommand>();
-            descriptor.AddCommand<PayForOrderCommand>();
-            descriptor.AddCommand<TakeReservedStockCommand>();
-            descriptor.AddCommand<CompleteOrderCommand>();
-            descriptor.AddCommand<CompletePendingOrderCommand>();
-
-            return descriptor;
-        }
     }
 }

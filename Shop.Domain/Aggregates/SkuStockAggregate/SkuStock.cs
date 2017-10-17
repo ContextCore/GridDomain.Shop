@@ -53,8 +53,7 @@ namespace Shop.Domain.Aggregates.SkuStockAggregate
 
         private void CancelReservation(Guid reserveId)
         {
-            Reservation reservation;
-            if (!Reservations.TryGetValue(reserveId, out reservation))
+            if (!Reservations.TryGetValue(reserveId, out var reservation))
             {
                 _logger.Warning("Could not find expired reservation {reserve}", reserveId);
                 return;
@@ -81,11 +80,10 @@ namespace Shop.Domain.Aggregates.SkuStockAggregate
             if (Quantity < quantity)
                 throw new OutOfStockException(quantity, Quantity);
 
-            Reservation oldReservation;
             var quantityToReserve = quantity;
             var expirationDate = (reservationStartTime ?? BusinessDateTime.UtcNow) + ReservationTime;
 
-            if (Reservations.TryGetValue(reserveId, out oldReservation))
+            if (Reservations.TryGetValue(reserveId, out var oldReservation))
             {
                 quantityToReserve += oldReservation.Quantity;
 

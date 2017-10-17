@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using GridDomain.Configuration;
-using GridDomain.Node;
-using GridDomain.Node.Configuration.Akka;
-using GridDomain.Node.Configuration.Composition;
-using Shop.Composition;
 using PeterKottas.DotNetCore.WindowsService;
 using Serilog;
 [assembly:InternalsVisibleTo("Shop.Tests.Acceptance")]
@@ -24,10 +19,7 @@ namespace Shop.Node
                                                   config.SetName("Shop node");
                                                   config.Service(serviceConfig =>
                                                                  {
-                                                                     serviceConfig.ServiceFactory((extraArguments, c) =>
-                                                                                                  {
-                                                                                                      return new ShopNode();
-                                                                                                  });
+                                                                     serviceConfig.ServiceFactory((extraArguments, c) => ShopNode.CreateDefault());
                                                                      serviceConfig.OnStart((service, extraArguments) =>
                                                                                            {
                                                                                                Console.WriteLine("Service {0} started", name);

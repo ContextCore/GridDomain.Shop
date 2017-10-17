@@ -34,8 +34,9 @@ namespace Shop.Tests.Unit.SkuStockAggregate.Aggregate
                                                   .When(new RaiseScheduledDomainEventCommand(futureEventId, aggregateId, Guid.NewGuid()))
                                                   .Then(new ReserveExpired(aggregateId, customerId),
                                                         new FutureEventOccuredEvent(Any.GUID, futureEventId, aggregateId))
-                                                  .Run()
-                                                  .Check();
+                                                  .Run();
+
+            scenario.Check();
 
 
             //Then reserved stock quantity should be returned to sku stock

@@ -1,7 +1,8 @@
-﻿using GridDomain.Node.Configuration.Akka;
+﻿
+using GridDomain.Node.Persistence.Sql;
 
 namespace Shop.Node {
-    class ShopNodeDbConfig : DefaultAkkaDbConfiguration
+    class ShopNodeDbConfig : DefaultNodeDbConfiguration
     {
         public ShopNodeDbConfig() : base("Server = (local); Database = ShopWrite; Integrated Security = true; MultipleActiveResultSets = True")
         {

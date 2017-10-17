@@ -1,9 +1,9 @@
-﻿using GridDomain.Node.Configuration.Akka;
+﻿
+using GridDomain.Node.Configuration;
 
 namespace Shop.Node {
-    class ShopNodeNetworkConfig : IAkkaNetworkAddress
+    class ShopNodeNetworkConfig : INodeNetworkAddress
     {
-        public string SystemName { get; } = "ShopNode";
         public string Host { get; } = "localhost";
         public string PublicHost { get; } = "localhost";
         public int PortNumber { get; } = 5002;
