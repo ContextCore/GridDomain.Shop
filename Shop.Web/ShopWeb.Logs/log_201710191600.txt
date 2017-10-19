@@ -1,0 +1,56 @@
+2017-10-19 16:28:12.206 +03:00 [Information] started connect to griddomain node at ShopNodeAddress { Host: "localhost", PublicHost: "localhost", PortNumber: 5002, EnforceIpVersion: True }
+2017-10-19 16:28:17.691 +03:00 [Debug] "Logger log1-SerilogLoggerActor [SerilogLoggerActor] started"
+2017-10-19 16:28:17.694 +03:00 [Debug] "StandardOutLogger being removed"
+2017-10-19 16:28:17.694 +03:00 [Debug] "Default Loggers started"
+2017-10-19 16:28:20.536 +03:00 [Information] Starting association
+2017-10-19 16:28:21.946 +03:00 [Information] User profile is available. Using '"C:\Users\aleskov\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2017-10-19 16:28:22.008 +03:00 [Information] Association formed
+2017-10-19 16:28:22.010 +03:00 [Information] Connected to griddomain node at ShopNodeAddress { Host: "localhost", PublicHost: "localhost", PortNumber: 5002, EnforceIpVersion: True }
+2017-10-19 16:28:22.036 +03:00 [Information] Creating key {f5d18fe6-b3af-43a3-9b7a-e996f6f08389} with creation date 2017-10-19 13:28:22Z, activation date 2017-10-19 13:28:21Z, and expiration date 2018-01-17 13:28:21Z.
+2017-10-19 16:28:22.054 +03:00 [Information] Writing data to file '"C:\Users\aleskov\AppData\Local\ASP.NET\DataProtection-Keys\key-f5d18fe6-b3af-43a3-9b7a-e996f6f08389.xml"'.
+2017-10-19 16:29:22.661 +03:00 [Information] started connect to griddomain node at ShopNodeAddress { Host: "localhost", PublicHost: "localhost", PortNumber: 5002, EnforceIpVersion: True }
+2017-10-19 16:29:25.282 +03:00 [Debug] "Logger log1-SerilogLoggerActor [SerilogLoggerActor] started"
+2017-10-19 16:29:25.283 +03:00 [Debug] "StandardOutLogger being removed"
+2017-10-19 16:29:25.283 +03:00 [Debug] "Default Loggers started"
+2017-10-19 16:29:25.744 +03:00 [Information] Starting association
+2017-10-19 16:29:26.296 +03:00 [Information] User profile is available. Using '"C:\Users\aleskov\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2017-10-19 16:29:26.506 +03:00 [Information] Association formed
+2017-10-19 16:29:26.511 +03:00 [Information] Connected to griddomain node at ShopNodeAddress { Host: "localhost", PublicHost: "localhost", PortNumber: 5002, EnforceIpVersion: True }
+2017-10-19 16:29:31.535 +03:00 [Information] Request starting HTTP/1.1 GET http://localhost:44342/  
+2017-10-19 16:29:32.046 +03:00 [Information] Executing action method "Shop.Web.Controllers.HomeController.Index (Shop.Web)" with arguments (null) - ModelState is Valid
+2017-10-19 16:29:38.008 +03:00 [Information] Executing ViewResult, running view at path "/Views/Home/Index.cshtml".
+2017-10-19 16:29:39.038 +03:00 [Information] Node will restart because file changed: P:\GridDomain.Shop\Shop.Web\ClientApp\dist\main-server.js
+2017-10-19 16:29:39.349 +03:00 [Information] webpack built 4357379fa19a3d196197 in 9583ms
+2017-10-19 16:29:43.542 +03:00 [Information] Executed action "Shop.Web.Controllers.HomeController.Index (Shop.Web)" in 11510.5974ms
+2017-10-19 16:29:43.580 +03:00 [Information] Request finished in 12053.2535ms 200 text/html; charset=utf-8
+2017-10-19 16:29:43.644 +03:00 [Information] Request starting HTTP/1.1 GET http://localhost:44342/dist/vendor.css?v=b_M7vdGvPSJOo55_XCEeI_fYCVztjxk08tEeZj5UyoU  
+2017-10-19 16:29:43.717 +03:00 [Information] Sending file. Request path: '"/dist/vendor.css"'. Physical path: '"P:\GridDomain.Shop\Shop.Web\wwwroot\dist\vendor.css"'
+2017-10-19 16:29:43.771 +03:00 [Information] Request finished in 127.4261ms 200 text/css
+2017-10-19 16:29:43.938 +03:00 [Information] Request starting HTTP/1.1 GET http://localhost:44342/dist/vendor.js?v=ZqNPQaHByBnAu71aMfmw1AFP-r4wxXc6-Bp1PzzR3WU  
+2017-10-19 16:29:43.943 +03:00 [Information] Request starting HTTP/1.1 GET http://localhost:44342/dist/main-client.js?v=viJV8bfnqnwkGQSCuCta4rkAW573xsUHOGuRLegb2D0  
+2017-10-19 16:29:43.954 +03:00 [Information] Sending file. Request path: '"/dist/vendor.js"'. Physical path: '"P:\GridDomain.Shop\Shop.Web\wwwroot\dist\vendor.js"'
+2017-10-19 16:29:44.020 +03:00 [Information] Request finished in 77.0124ms 200 application/javascript; charset=UTF-8
+2017-10-19 16:29:44.643 +03:00 [Information] Request finished in 704.4131ms 200 application/javascript
+2017-10-19 16:29:45.647 +03:00 [Information] Request starting HTTP/1.1 GET http://localhost:44342/dist/__webpack_hmr  
+2017-10-19 16:29:46.019 +03:00 [Information] Request starting HTTP/1.1 GET http://localhost:44342/favicon.ico  
+2017-10-19 16:29:46.019 +03:00 [Information] Sending file. Request path: '"/favicon.ico"'. Physical path: '"P:\GridDomain.Shop\Shop.Web\wwwroot\favicon.ico"'
+2017-10-19 16:29:46.046 +03:00 [Information] Request finished in 27.0673ms 200 image/x-icon
+2017-10-19 16:29:55.098 +03:00 [Information] Request starting HTTP/1.1 GET http://localhost:44342/home/swagger  
+2017-10-19 16:29:55.103 +03:00 [Information] Executing action method "Shop.Web.Controllers.HomeController.Index (Shop.Web)" with arguments (null) - ModelState is Valid
+2017-10-19 16:29:55.104 +03:00 [Information] Executing ViewResult, running view at path "/Views/Home/Index.cshtml".
+2017-10-19 16:29:58.517 +03:00 [Information] Executed action "Shop.Web.Controllers.HomeController.Index (Shop.Web)" in 3414.0496ms
+2017-10-19 16:29:58.518 +03:00 [Information] Request finished in 3419.5948ms 200 text/html; charset=utf-8
+2017-10-19 16:29:58.556 +03:00 [Information] Request starting HTTP/1.1 GET http://localhost:44342/dist/main-client.js?v=viJV8bfnqnwkGQSCuCta4rkAW573xsUHOGuRLegb2D0  
+2017-10-19 16:29:58.607 +03:00 [Information] Request finished in 50.5021ms 200 application/javascript; charset=UTF-8
+2017-10-19 16:29:59.656 +03:00 [Information] Request starting HTTP/1.1 GET http://localhost:44342/dist/__webpack_hmr  
+2017-10-19 16:29:59.683 +03:00 [Information] Request finished in 14035.6694ms 200 text/event-stream; charset=utf-8
+2017-10-19 16:29:59.781 +03:00 [Information] Request starting HTTP/1.1 GET http://localhost:44342/swagger  
+2017-10-19 16:29:59.787 +03:00 [Information] Request finished in 5.448ms 301 
+2017-10-19 16:29:59.834 +03:00 [Information] Request starting HTTP/1.1 GET http://localhost:44342/swagger/  
+2017-10-19 16:29:59.839 +03:00 [Information] Sending file. Request path: '"/index.html"'. Physical path: '"N/A"'
+2017-10-19 16:29:59.840 +03:00 [Information] Request finished in 5.5984ms 200 text/html
+2017-10-19 16:29:59.940 +03:00 [Information] Request starting HTTP/1.1 GET http://localhost:44342/swagger/css/typography.css  
+2017-10-19 16:29:59.942 +03:00 [Information] Sending file. Request path: '"/css/typography.css"'. Physical path: '"N/A"'
+2017-10-19 16:29:59.943 +03:00 [Information] Request finished in 3.3771ms 200 text/css
+2017-10-19 16:29:59.984 +03:00 [Information] Request starting HTTP/1.1 GET http://localhost:44342/swagger/lib/object-assign-pollyfill.js  
+2017-10-19 16:29:59.984 +03:00 [Information] Request starting HTTP/1.1 GET http://localhost:44342/swagger/lib/jquery.slideto.min.js  

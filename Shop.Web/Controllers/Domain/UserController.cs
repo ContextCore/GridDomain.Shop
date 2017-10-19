@@ -21,16 +21,29 @@ namespace Shop.Web.Controllers.Domain {
         }
 
         [HttpPost]
-        public async Task<Guid> CreateUser([FromBody] CreateUserViewModel userViewModel)
+        public async Task<UserCreatedViewModel> CreateUser([FromBody] CreateUserViewModel userViewModel)
         {
             var createUserCommand = new CreateUserCommand(Guid.NewGuid(), userViewModel.Login, Guid.NewGuid());
-            var createAccountCommand = new CreateAccountCommand(createUserCommand.AccountId, createUserCommand.UserId, _accountNumberProvider.GetNext(AccountSequenceName));
+            var accountNumber = _accountNumberProvider.GetNext(AccountSequenceName);
+            var createAccountCommand = new CreateAccountCommand(createUserCommand.AccountId, createUserCommand.UserId, accountNumber);
             await _commandBus.Execute(createUserCommand);
             await _commandBus.Execute(createAccountCommand);
-            return createUserCommand.UserId;
+            return new UserCreatedViewModel(createUserCommand.UserId, createAccountCommand.AccountId, accountNumber);
         }
     }
 
+    public class UserCreatedViewModel
+    {
+        public UserCreatedViewModel(Guid userId, Guid accountId, long accountNumber)
+        {
+            UserId = userId;
+            AccountId = accountId;
+            AccountNumber = accountNumber;
+        }
+        public Guid UserId { get; }
+        public Guid AccountId { get; }
+        public long AccountNumber { get; }
+    }
     public class CreateUserViewModel
     {
         public string Login { get; set; }

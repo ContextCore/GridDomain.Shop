@@ -11,9 +11,10 @@ namespace Shop.Node
     public class ShopNode : IMicroService
     {
         private GridDomainNode _gridDomainNode;
+        private readonly ILogger _logger;
         public static NodeConfiguration DefaultNodeConfiguration { get; } = new ShopNodeConfiguration();
         public static ISqlNodeDbConfiguration DefaultPersistenceConfiguration { get; } = new ShopNodeDbConfig();
-        public static string DefaultReadDbConnectionString { get; } = "";
+        public static string DefaultReadDbConnectionString { get; } = @"Server = (local); Database = ShopRead; Integrated Security = true; MultipleActiveResultSets = True";
 
         public NodeConfiguration NodeConfiguration { get; } 
         public ISqlNodeDbConfiguration PersistenceConfiguration { get; }
@@ -33,8 +34,9 @@ namespace Shop.Node
         {
         }
 
-        public ShopNode(NodeConfiguration cfg, ISqlNodeDbConfiguration persistenceCfg, string readModelString)
+        public ShopNode(NodeConfiguration cfg, ISqlNodeDbConfiguration persistenceCfg, string readModelString, ILogger logger = null)
         {
+            _logger = logger;
             NodeConfiguration = cfg;
             PersistenceConfiguration = persistenceCfg;
             ReadDbConnectionString = readModelString;
@@ -51,7 +53,7 @@ namespace Shop.Node
 
             var actorSystemFactory = ActorSystemBuilder.New().Build(NodeConfiguration, new ShopNodeDbConfig());
 
-            _gridDomainNode = new GridDomainNode(actorSystemFactory, new ShopDomainConfiguration(ReadDbConnectionString));
+            _gridDomainNode = new GridDomainNode(actorSystemFactory, _logger ?? Log.Logger, new ShopDomainConfiguration(ReadDbConnectionString));
             _gridDomainNode.Start().Wait();
         }
 

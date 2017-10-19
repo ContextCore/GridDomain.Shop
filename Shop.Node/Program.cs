@@ -13,6 +13,7 @@ namespace Shop.Node
         public static void Main()
         {
             Log.Logger = new ShopLogConfiguration().CreateLogger();
+
             ServiceRunner<ShopNode>.Run(config =>
                                               {
                                                   var name = config.GetDefaultName();

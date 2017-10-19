@@ -23,7 +23,6 @@
     <PackageReference Include="GridDomain.ProcessManagers" Version="2.1.905-alfa" />
     <PackageReference Include="GridDomain.Scheduling" Version="2.1.905-alfa" />
     <PackageReference Include="NMoneys" Version="5.1.4.1" />
-    <PackageReference Include="System.ServiceProcess.ServiceController" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>
