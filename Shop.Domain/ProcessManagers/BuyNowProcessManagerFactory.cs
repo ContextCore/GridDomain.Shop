@@ -9,13 +9,15 @@ namespace Shop.Domain.ProcessManagers
 {
     public class BuyNowProcessStateFactory : IProcessStateFactory<BuyNowState>
     {
-        public BuyNowState Create(object message, BuyNowState state)
+        public BuyNowState Create(object message)
         {
             switch (message)
             {
                 case SkuPurchaseOrdered e: return new BuyNowState(Guid.NewGuid(), nameof(BuyNow.Initial));
             }
-            return state;
+            throw new InvalidMessageToCreateStateException();
         }
     }
+
+    public class InvalidMessageToCreateStateException : Exception { }
 }
