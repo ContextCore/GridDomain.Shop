@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GridDomain.Node" Version="2.1.905-alfa" />
-    <PackageReference Include="GridDomain.Node.Persistence.Sql" Version="2.1.905-alfa" />
+    <PackageReference Include="GridDomain.Node" Version="2.1.906-alfa" />
+    <PackageReference Include="GridDomain.Node.Persistence.Sql" Version="2.1.906-alfa" />
     <PackageReference Include="PeterKottas.DotNetCore.WindowsService" Version="2.0.0" />
   </ItemGroup>
 

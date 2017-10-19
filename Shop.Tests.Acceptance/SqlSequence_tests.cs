@@ -25,7 +25,7 @@ namespace Shop.Tests.Acceptance
 
 
         private const string ConnectionString =
-            "Server = (local); Database = Shop; Integrated Security = true; MultipleActiveResultSets = True";
+            "Server = (local); Database = ShopWrite; Integrated Security = true; MultipleActiveResultSets = True";
 
         private void DeleteCreatedSequences(params string[] sequences)
         {
