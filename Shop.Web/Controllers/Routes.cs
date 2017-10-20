@@ -11,8 +11,8 @@ namespace Shop.Web.Controllers
         {
             public static class User
             {
-                public const string Controller = "api/user";
-                public const string Create = "api/user/create";
+                public const string Controller = "/api/user";
+                public const string Create = "/api/user/create";
             }
         }
     }
