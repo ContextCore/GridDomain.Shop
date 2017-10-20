@@ -18,6 +18,4 @@ namespace Shop.Domain.ProcessManagers
             throw new InvalidMessageToCreateStateException();
         }
     }
-
-    public class InvalidMessageToCreateStateException : Exception { }
 }

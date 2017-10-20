@@ -8,7 +8,7 @@ using Shop.Composition;
 
 namespace Shop.Node
 {
-    public class ShopNode : IMicroService
+    public class ShopNode : IMicroService, IDisposable
     {
         private GridDomainNode _gridDomainNode;
         private readonly ILogger _logger;
@@ -60,6 +60,11 @@ namespace Shop.Node
         public void Stop()
         {
             _gridDomainNode.Stop().Wait();
+        }
+
+        public void Dispose()
+        {
+            _gridDomainNode.Dispose();
         }
     }
 

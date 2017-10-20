@@ -35,8 +35,7 @@ namespace Shop.Tests.Acceptance
                 foreach (var sequence in sequences)
                     try
                     {
-                        var cmd = new SqlCommand("DROP SEQUENCE " + sequence);
-                        cmd.Connection = connection;
+                        var cmd = new SqlCommand("DROP SEQUENCE " + sequence) {Connection = connection};
                         cmd.ExecuteNonQuery();
                     }
                     catch

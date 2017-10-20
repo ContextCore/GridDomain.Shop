@@ -40,8 +40,8 @@ namespace Shop.Web
             s.AddIdentity<AppUser, IdentityRole>
                     (o =>
                     {
-                                                                                 // configure identity options
-                                                                                 o.Password.RequireDigit = false;
+                        // configure identity options
+                        o.Password.RequireDigit = false;
                         o.Password.RequireLowercase = false;
                         o.Password.RequireUppercase = false;
                         o.Password.RequireNonAlphanumeric = false;
@@ -57,14 +57,13 @@ namespace Shop.Web
                                           options.AddPolicy(Constants.Strings.AccessPolicy.ApiUser, policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
                                       });
 
-            var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
+            var config = new ShopWebConfig();
+            Configuration.Bind(config);
 
-
-        //    s.Configure<JwtIssuerOptions>(options => jwtAppSettingOptions.Bind(options));
-            s.Configure<JwtIssuerOptions>(options =>
+            s.Configure<Identity.JwtIssuerOptions>(options =>
                                                  {
-                                                     options.Issuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)];
-                                                     options.Audience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)];
+                                                     options.Issuer = config.JwtIssuerOptions.Issuer;
+                                                     options.Audience = config.JwtIssuerOptions.Audience;
                                                      options.SigningCredentials = new SigningCredentials(CompositionRoot.SigningKey, SecurityAlgorithms.HmacSha256);
                                                  });
 
@@ -72,10 +71,10 @@ namespace Shop.Web
             var tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = true,
-                ValidIssuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)],
+                ValidIssuer = config.JwtIssuerOptions.Issuer,
 
                 ValidateAudience = true,
-                ValidAudience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)],
+                ValidAudience = config.JwtIssuerOptions.Issuer,
 
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = CompositionRoot.SigningKey,

@@ -22,27 +22,26 @@ namespace Shop.Web {
 
         public static void Configure(ContainerBuilder builder, IConfiguration configuration)
         {
+            var config = new ShopWebConfig();
+            configuration.Bind(config);
+
             var node = ConnectToNode();
             builder.RegisterInstance(node).As<ICommandExecutor>();
 
-           var sequenceProvider = new SqlSequenceProvider("Server = (local); Database = ShopRead; Integrated Security = true; MultipleActiveResultSets = True");
+            var sequenceProvider = new SqlSequenceProvider(config.ConnectionStrings.ShopSequences);
             sequenceProvider.Connect();
 
             builder.RegisterInstance(sequenceProvider).As<ISequenceProvider>();
 
-            var options = new DbContextOptionsBuilder<ShopIdentityDbContext>().UseSqlServer(configuration.GetConnectionString("ShopIdentity")).Options;
+            var options = new DbContextOptionsBuilder<ShopIdentityDbContext>().UseSqlServer(config.ConnectionStrings.ShopIdentity).Options;
             builder.Register(c => new ShopIdentityDbContext(options)).InstancePerLifetimeScope();
 
-
-            // jwt wire up
-            // Get options from app settings
-            var jwtAppSettingOptions = configuration.GetSection(nameof(JwtIssuerOptions));
-
+            
             // Configure JwtIssuerOptions
-            builder.Register(c => new JwtIssuerOptions()
+            builder.Register(c => new Identity.JwtIssuerOptions()
                                                  {
-                                                     Issuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)],
-                                                     Audience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)],
+                                                     Issuer = config.JwtIssuerOptions.Issuer,
+                                                     Audience = config.JwtIssuerOptions.Audience,
                                                      SigningCredentials = new SigningCredentials(SigningKey, SecurityAlgorithms.HmacSha256)
                                                  });
 

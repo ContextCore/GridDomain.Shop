@@ -18,14 +18,14 @@ namespace Shop.Web
     {
         public static int Main(string[] args)
         {
-            var log = InitLogger();
+          //  var log = InitLogger();
             try
             {
                 BuildWebHost(args).Run();
             }
             catch (Exception ex)
             {
-                log.Fatal(ex, "Host terminated unexpectedly");
+                Log.Logger.Fatal(ex, "Host terminated unexpectedly");
                 return 1;
             }
             finally
@@ -40,22 +40,24 @@ namespace Shop.Web
             return Log.Logger = new LoggerConfiguration().MinimumLevel.Verbose()
                                                          .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                                                          .Enrich.FromLogContext()
-                                                         .WriteTo.RollingFile(".\\ShopWeb.Logs\\log_{HalfHour}.txt")
+                                                         .WriteTo.RollingFile(".\\Logs.Shop.Web\\log_{HalfHour}.txt")
                                                          .WriteTo.Console()
                                                          .CreateLogger();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
-                                       WebHost.CreateDefaultBuilder(args)
-                                              .ConfigureServices(s =>
-                                                                 {
-                                                                     s.AddMvc();
-                                                                     s.AddAutofac();
-                                                                 })
-                                              .UseStartup<Startup>()
-                                              .UseKestrel()
-                                              .UseSerilog()
-                                              .Build();
+        public static IWebHostBuilder Configure(IWebHostBuilder bld)
+        {
+            return bld.ConfigureServices(s =>
+                                         {
+                                             s.AddMvc();
+                                             s.AddAutofac();
+                                         })
+                      .UseStartup<Startup>()
+                      .UseKestrel()
+                      .UseSerilog(InitLogger());
+        }
+
+        public static IWebHost BuildWebHost(string[] args) => Configure(WebHost.CreateDefaultBuilder(args)).Build();
     }
 
  

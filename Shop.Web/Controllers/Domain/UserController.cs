@@ -8,7 +8,7 @@ using Shop.Infrastructure;
 
 namespace Shop.Web.Controllers.Domain {
 
-    [ApiRoute]
+    [Route(Routes.Api.User.Controller)]
     public class UserController : Controller
     {
         private readonly ICommandExecutor _commandBus;
@@ -20,7 +20,7 @@ namespace Shop.Web.Controllers.Domain {
             _commandBus = commandBus;
         }
 
-        [HttpPost]
+        [HttpPost(Routes.Api.User.Create)]
         public async Task<UserCreatedViewModel> CreateUser([FromBody] CreateUserViewModel userViewModel)
         {
             var createUserCommand = new CreateUserCommand(Guid.NewGuid(), userViewModel.Login, Guid.NewGuid());
@@ -30,22 +30,5 @@ namespace Shop.Web.Controllers.Domain {
             await _commandBus.Execute(createAccountCommand);
             return new UserCreatedViewModel(createUserCommand.UserId, createAccountCommand.AccountId, accountNumber);
         }
-    }
-
-    public class UserCreatedViewModel
-    {
-        public UserCreatedViewModel(Guid userId, Guid accountId, long accountNumber)
-        {
-            UserId = userId;
-            AccountId = accountId;
-            AccountNumber = accountNumber;
-        }
-        public Guid UserId { get; }
-        public Guid AccountId { get; }
-        public long AccountNumber { get; }
-    }
-    public class CreateUserViewModel
-    {
-        public string Login { get; set; }
     }
 }
