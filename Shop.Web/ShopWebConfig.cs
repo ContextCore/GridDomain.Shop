@@ -1,7 +1,8 @@
 namespace Shop.Web {
-    internal class ShopWebConfig
+    public class ShopWebConfig
     {
         public ConnectionStrings ConnectionStrings { get; set; }
         public JwtIssuerOptions JwtIssuerOptions { get; set; }
+        public NodeOptions NodeOptions { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace Shop.Node
 {
     public class ShopNode : IMicroService, IDisposable
     {
-        private GridDomainNode _gridDomainNode;
+        public GridDomainNode DomainNode { get; private set; }
         private readonly ILogger _logger;
         public static NodeConfiguration DefaultNodeConfiguration { get; } = new ShopNodeConfiguration();
         public static ISqlNodeDbConfiguration DefaultPersistenceConfiguration { get; } = new ShopNodeDbConfig();
@@ -53,18 +53,18 @@ namespace Shop.Node
 
             var actorSystemFactory = ActorSystemBuilder.New().Build(NodeConfiguration, new ShopNodeDbConfig());
 
-            _gridDomainNode = new GridDomainNode(actorSystemFactory, _logger ?? Log.Logger, new ShopDomainConfiguration(ReadDbConnectionString));
-            _gridDomainNode.Start().Wait();
+            DomainNode = new GridDomainNode(actorSystemFactory, _logger ?? Log.Logger, new ShopDomainConfiguration(ReadDbConnectionString));
+            DomainNode.Start().Wait();
         }
 
         public void Stop()
         {
-            _gridDomainNode.Stop().Wait();
+            DomainNode.Stop().Wait();
         }
 
         public void Dispose()
         {
-            _gridDomainNode.Dispose();
+            DomainNode.Dispose();
         }
     }
 

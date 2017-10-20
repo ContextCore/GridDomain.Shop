@@ -20,13 +20,9 @@ namespace Shop.Web {
         private const string SecretKey = "iNivDmHLpUA223sqsfhqGbMRdRj1PVkH"; // todo: get this from somewhere secure
         public static readonly SymmetricSecurityKey SigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SecretKey));
 
-        public static void Configure(ContainerBuilder builder, IConfiguration configuration)
+        public static void Configure(ContainerBuilder builder, ShopWebConfig config, ICommandExecutor gridNode)
         {
-            var config = new ShopWebConfig();
-            configuration.Bind(config);
-
-            var node = ConnectToNode();
-            builder.RegisterInstance(node).As<ICommandExecutor>();
+            builder.RegisterInstance(gridNode).As<ICommandExecutor>();
 
             var sequenceProvider = new SqlSequenceProvider(config.ConnectionStrings.ShopSequences);
             sequenceProvider.Connect();
@@ -47,16 +43,7 @@ namespace Shop.Web {
 
             builder.RegisterType<JwtFactory>().As<IJwtFactory>().ExternallyOwned();
         }
-
-        private static IGridDomainNode ConnectToNode()
-        {
-            var address = new ShopNodeAddress();
-            var connector = new GridNodeConnector(new NodeConfiguration("ShopNode", new ShopNodeAddress()));
-            Log.Information("started connect to griddomain node at {@address}", address);
-            connector.Connect()
-                     .ContinueWith(t => Log.Information("Connected to griddomain node at {@address}", address),
-                                        TaskContinuationOptions.OnlyOnRanToCompletion);
-            return connector;
-        }
     }
+
+    internal class CannotConnectToNodeException : Exception { }
 }

@@ -1,5 +1,5 @@
 namespace Shop.Web {
-    class ConnectionStrings
+    public class ConnectionStrings
     {
         public string ShopIdentity { get; set; }
         public string ShopSequences { get; set; }

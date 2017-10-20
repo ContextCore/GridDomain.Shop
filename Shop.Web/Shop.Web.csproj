@@ -49,6 +49,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Shop.Domain\Shop.Domain.csproj" />
+    <ProjectReference Include="..\Shop.Node\Shop.Node.csproj" />
   </ItemGroup>
 
   <ItemGroup>

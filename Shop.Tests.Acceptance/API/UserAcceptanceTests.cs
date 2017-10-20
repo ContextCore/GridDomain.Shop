@@ -22,6 +22,7 @@ namespace Shop.Tests.Acceptance.API {
         {
             _shopTestContext = context;
             _testOutputHelper = output;
+
         }
 
         [Fact]
@@ -33,6 +34,11 @@ namespace Shop.Tests.Acceptance.API {
 
             response.EnsureSuccessStatusCode();
             response.StatusCode.ShouldEqual(HttpStatusCode.OK);
+
+            var userCreated = (UserCreatedViewModel)JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync(), typeof(UserCreatedViewModel));
+            userCreated.UserId.ShouldNotEqual(Guid.Empty);
+            userCreated.AccountId.ShouldNotEqual(Guid.Empty);
+            userCreated.AccountNumber.ShouldBeGreaterThan(0);
         }
     }
 }
