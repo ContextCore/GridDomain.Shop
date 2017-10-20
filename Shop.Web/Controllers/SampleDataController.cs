@@ -8,8 +8,8 @@ using Shop.Web.Identity;
 
 namespace Shop.Web.Controllers
 {
-    //[Authorize(Policy = Constants.Strings.AccessPolicy.ApiUser)]
-    [Route("api/[controller]")]
+    [Authorize(Policy = Constants.Strings.AccessPolicy.ApiUser)]
+    [Route(Routes.Api.SampleData.Controller)]
     public class SampleDataController : Controller
     {
         private static string[] Summaries = new[]
@@ -17,7 +17,7 @@ namespace Shop.Web.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        [HttpGet("[action]")]
+        [HttpGet(Routes.Api.SampleData.WeatherForecasts)]
         public IEnumerable<WeatherForecast> WeatherForecasts()
         {
             var rng = new Random();
