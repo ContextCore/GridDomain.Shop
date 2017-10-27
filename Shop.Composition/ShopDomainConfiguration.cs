@@ -39,7 +39,12 @@ namespace Shop.Composition {
 
         private void Compose(ContainerBuilder container)
         {
-            container.RegisterInstance<ISkuPriceQuery>(new SkuPriceQuery(() => new ShopDbContext(_readModelContextOptions)));
+            container.RegisterInstance<Func<ShopDbContext>>(() => new ShopDbContext(_readModelContextOptions));
+
+            container.RegisterType<SkuPriceQuery>()
+                     .As<ISkuPriceQuery>()
+                     .ExternallyOwned();
+
             container.RegisterType<SqlPriceCalculator>().As<IPriceCalculator>().SingleInstance();
             container.RegisterInstance<ISequenceProvider>(new SqlSequenceProvider(_dbConnectionString));
             container.RegisterInstance<ILogger>(Log.Logger);

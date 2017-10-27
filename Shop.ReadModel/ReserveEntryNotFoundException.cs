@@ -2,6 +2,8 @@
 
 namespace Shop.ReadModel
 {
+
+   
     public class ReserveEntryNotFoundException : Exception
     {
         public ReserveEntryNotFoundException(Guid reserveId)

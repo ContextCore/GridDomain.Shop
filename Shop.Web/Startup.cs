@@ -163,8 +163,8 @@ namespace Shop.Web
             var node = new ShopNode(Config.NodeOptions.Name,
                                     Config.NodeOptions.Host,
                                     Config.NodeOptions.Port,
-                                    ShopNode.DefaultPersistenceConfiguration.JournalConnectionString,
-                                    ShopNode.DefaultReadDbConnectionString);
+                                    Config.ConnectionStrings.ShopWrite,
+                                    Config.ConnectionStrings.ShopRead);
             node.Start();
             return node.DomainNode;
         }

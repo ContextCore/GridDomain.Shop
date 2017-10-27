@@ -9,6 +9,8 @@ using Newtonsoft.Json;
 using Shop.Domain.Aggregates.AccountAggregate.Commands;
 using Shop.Domain.Aggregates.UserAggregate.Commands;
 using Shop.Infrastructure;
+using Shop.ReadModel.Context;
+using Shop.ReadModel.Queries;
 using Shop.Web.Controllers.Domain;
 using Shop.Web.Identity;
 using Shop.Web.Identity.ViewModels;
@@ -24,14 +26,17 @@ namespace Shop.Web.Controllers
 
         private readonly ICommandExecutor _commandBus;
         private readonly ISequenceProvider _accountNumberProvider;
+        private readonly ISingleQuery<Guid, User> _userQuery;
         private const string AccountSequenceName = "AccountSequence";
 
         public UserController(UserManager<AppUser> userManager,
-                                 IMapper mapper,
-                                 ShopIdentityDbContext appDbContext,
-                                 ICommandExecutor commandBus,
-                                 ISequenceProvider accountNumberProvider)
+                              IMapper mapper,
+                              ShopIdentityDbContext appDbContext,
+                              ICommandExecutor commandBus,
+                              ISequenceProvider accountNumberProvider,
+                              IUserInfoQuery userQuery)
         {
+            _userQuery = userQuery;
             _userManager = userManager;
             _mapper = mapper;
             _appDbContext = appDbContext;
@@ -40,9 +45,9 @@ namespace Shop.Web.Controllers
         }
 
         [HttpPost(Routes.Api.User.Create)]
-        public async Task<IActionResult> Create([FromBody]RegistrationViewModel model)
+        public async Task<IActionResult> Create([FromBody] RegistrationViewModel model)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
@@ -61,8 +66,15 @@ namespace Shop.Web.Controllers
             var createAccountCommand = new CreateAccountCommand(createUserCommand.AccountId, createUserCommand.UserId, accountNumber);
             await _commandBus.Execute(createUserCommand, createAccountCommand);
 
-            return new ContentResult{Content = JsonConvert.SerializeObject(new UserCreatedViewModel(createUserCommand.UserId, createAccountCommand.AccountId, accountNumber)) };
+            return new ContentResult {Content = JsonConvert.SerializeObject(new UserCreatedViewModel(createUserCommand.UserId, createAccountCommand.AccountId, accountNumber))};
         }
 
+
+        [HttpGet(Routes.Api.User.Get)]
+        public async Task<UserViewModel> Get(Guid id)
+        {
+            var user = await _userQuery.Execute(id);
+            return new UserViewModel() {Login = user.Login, Created = user.Created};
+        }
     }
 }

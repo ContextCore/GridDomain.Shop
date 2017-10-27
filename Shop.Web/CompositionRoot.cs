@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using Shop.Infrastructure;
+using Shop.ReadModel.Context;
+using Shop.ReadModel.Queries;
 using Shop.Web.Identity;
 
 namespace Shop.Web {
@@ -42,8 +44,36 @@ namespace Shop.Web {
                                                  });
 
             builder.RegisterType<JwtFactory>().As<IJwtFactory>().ExternallyOwned();
+
+
+            var queriesRoot = new QueriesCompositionRoot(config.ConnectionStrings.ShopRead);
+            queriesRoot.Configure(builder);
         }
     }
 
     internal class CannotConnectToNodeException : Exception { }
+
+    //TODO:place in readmodel or find better place
+    public class QueriesCompositionRoot
+    {
+        private readonly string _readDbConnectionString;
+
+        public QueriesCompositionRoot(string readDbConnectionString)
+        {
+            _readDbConnectionString = readDbConnectionString;
+        }
+
+        public void Configure(ContainerBuilder builder)
+        {
+            var options = new DbContextOptionsBuilder<ShopDbContext>().UseSqlServer(_readDbConnectionString).Options;
+            builder.Register<ShopDbContext>(c => new ShopDbContext(options))
+                   .AsSelf()
+                   .InstancePerLifetimeScope();
+
+            builder.RegisterType<UserInfoQuery>()
+                   .As<IUserInfoQuery>()
+                   .InstancePerLifetimeScope();
+        }
+
+    }
 }

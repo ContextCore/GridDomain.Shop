@@ -13,6 +13,7 @@ namespace Shop.Web.Controllers
             {
                 public const string Controller = "/api/user/";
                 public const string Create = "create";
+                public const string Get = "{id}";
             }
 
             public static class SampleData
