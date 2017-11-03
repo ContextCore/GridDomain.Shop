@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.6;</TargetFrameworks>
+    <TargetFramework>netstandard1.6</TargetFramework>
     <Description>Shop example domain</Description>
     <PackageTags>CQRS ES DDD Akka ShopExample</PackageTags>
     <Copyright>Copyright © aleskov</Copyright>
