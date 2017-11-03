@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.0/build/netcoreapp1.0/xunit.runner.reporters.netcoreapp10.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.0/build/netcoreapp1.0/xunit.runner.utility.netcoreapp10.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.0/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Shop.Composition" t="IncludeRecursive">
+        <e p="AccountDomainConfiguration.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="BuyNowProcessDomainConfiguration.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Shop.Composition.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="OrderDomainConfiguration.cs" t="Include" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include" />
+        <e p="Shop.Composition.csproj" t="IncludeRecursive" />
+        <e p="ShopDomainConfiguration.cs" t="Include" />
+        <e p="ShopRouteMap.cs" t="Include" />
+        <e p="SkuDomainConfiguration.cs" t="Include" />
+        <e p="SkuStockDomainConfiguration.cs" t="Include" />
+        <e p="UserDomainConfiguration.cs" t="Include" />
+      </e>
+      <e p="Shop.Domain" t="IncludeRecursive">
+        <e p="Aggregates" t="Include">
+          <e p="AccountAggregate" t="Include">
+            <e p="Account.cs" t="Include" />
+            <e p="AccountCommandsHandler.cs" t="Include" />
+            <e p="Commands" t="Include">
+              <e p="ChargeAccountCommand.cs" t="Include" />
+              <e p="CreateAccountCommand.cs" t="Include" />
+              <e p="PayForOrderCommand.cs" t="Include" />
+              <e p="ReplenishAccountByCardCommand.cs" t="Include" />
+            </e>
+            <e p="Events" t="Include">
+              <e p="AccountAmountChanged.cs" t="Include" />
+              <e p="AccountCreated.cs" t="Include" />
+              <e p="AccountReplenish.cs" t="Include" />
+              <e p="AccountWithdrawal.cs" t="Include" />
+            </e>
+            <e p="NegativeMoneyException.cs" t="Include" />
+            <e p="NotEnoughMoneyException.cs" t="Include" />
+          </e>
+          <e p="OrderAggregate" t="Include">
+            <e p="Commands" t="Include">
+              <e p="AddItemToOrderCommand.cs" t="Include" />
+              <e p="CalculateOrderTotalCommand.cs" t="Include" />
+              <e p="CompleteOrderCommand.cs" t="Include" />
+              <e p="CreateOrderCommand.cs" t="Include" />
+              <e p="OrderCommand.cs" t="Include" />
+            </e>
+            <e p="Events" t="Include">
+              <e p="ItemAdded.cs" t="Include" />
+              <e p="OrderCompleted.cs" t="Include" />
+              <e p="OrderCreated.cs" t="Include" />
+              <e p="OrderTotalCalculated.cs" t="Include" />
+            </e>
+            <e p="Exceptions" t="Include">
+              <e p="CannotCompleteAlreadyClosedOrderException.cs" t="Include" />
+              <e p="CantAddItemsToClosedOrder.cs" t="Include" />
+              <e p="InvalidMoneyException.cs" t="Include" />
+              <e p="InvalidQuantityException.cs" t="Include" />
+              <e p="NegativeOrderNumberException.cs" t="Include" />
+            </e>
+            <e p="Order.cs" t="Include" />
+            <e p="OrderCommandsHandler.cs" t="Include" />
+            <e p="OrderItem.cs" t="Include" />
+          </e>
+          <e p="SkuAggregate" t="Include">
+            <e p="Commands" t="Include">
+              <e p="CreateNewSkuCommand.cs" t="Include" />
+            </e>
+            <e p="Events" t="Include">
+              <e p="SkuCreated.cs" t="Include" />
+            </e>
+            <e p="Sku.cs" t="Include" />
+            <e p="SkuCommandsHandler.cs" t="Include" />
+          </e>
+          <e p="SkuStockAggregate" t="Include">
+            <e p="Commands" t="Include">
+              <e p="AddToStockCommand.cs" t="Include" />
+              <e p="CreateSkuStockCommand.cs" t="Include" />
+              <e p="ReserveStockCommand.cs" t="Include" />
+              <e p="TakeFromStockCommand.cs" t="Include" />
+              <e p="TakeReservedStockCommand.cs" t="Include" />
+            </e>
+            <e p="Events" t="Include">
+              <e p="ReserveCanceled.cs" t="Include" />
+              <e p="ReserveExpired.cs" t="Include" />
+              <e p="ReserveRenewed.cs" t="Include" />
+              <e p="SkuStockCreated.cs" t="Include" />
+              <e p="StockAdded.cs" t="Include" />
+              <e p="StockReserved.cs" t="Include" />
+              <e p="StockReserveTaken.cs" t="Include" />
+              <e p="StockTaken.cs" t="Include" />
+            </e>
+            <e p="InvalidSkuAddException.cs" t="Include" />
+            <e p="OutOfStockException.cs" t="Include" />
+            <e p="Reservation.cs" t="Include" />
+            <e p="SkuStock.cs" t="Include" />
+            <e p="SkuStockCommandsHandler.cs" t="Include" />
+          </e>
+          <e p="UserAggregate" t="Include">
+            <e p="Commands" t="Include">
+              <e p="BuySkuNowCommand.cs" t="Include" />
+              <e p="CancelPendingOrderCommand.cs" t="Include" />
+              <e p="CompletePendingOrderCommand.cs" t="Include" />
+              <e p="CreateUserCommand.cs" t="Include" />
+            </e>
+            <e p="Events" t="Include">
+              <e p="PendingOrderCanceled.cs" t="Include" />
+              <e p="PendingOrderCompleted.cs" t="Include" />
+              <e p="SkuPurchaseOrdered.cs" t="Include" />
+              <e p="UserCreated.cs" t="Include" />
+            </e>
+            <e p="OrderStatus.cs" t="Include" />
+            <e p="PendingOrder.cs" t="Include" />
+            <e p="User.cs" t="Include" />
+            <e p="UserCommandsHandler.cs" t="Include" />
+          </e>
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DomainServices" t="Include">
+          <e p="PriceCalculator" t="Include">
+            <e p="IPriceCalculator.cs" t="Include" />
+            <e p="ISkuPriceQuery.cs" t="Include" />
+            <e p="SkuPriceNotFoundException.cs" t="Include" />
+            <e p="SqlPriceCalculator.cs" t="Include" />
+          </e>
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard1.6" t="Include">
+              <e p="Shop.Domain.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="packages.config" t="Include" />
+        <e p="ProcessManagers" t="Include">
+          <e p="BuyNow.cs" t="Include" />
+          <e p="BuyNowProcessManagerFactory.cs" t="Include" />
+          <e p="BuyNowState.cs" t="Include" />
+        </e>
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Scenarious.txt" t="Include" />
+        <e p="Shop.Domain.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Shop.Infrastructure" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="InMemorySequenceProvider.cs" t="Include" />
+        <e p="ISequenceProvider.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard1.6" t="Include">
+              <e p="Shop.Infrastructure.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Shop.Infrastructure.csproj" t="IncludeRecursive" />
+        <e p="SqlSequenceProvider.cs" t="Include" />
+      </e>
+      <e p="Shop.Node" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Shop.Node.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Shop.Node.csproj" t="IncludeRecursive" />
+        <e p="ShopLogConfiguration.cs" t="Include" />
+        <e p="ShopNode.cs" t="Include" />
+        <e p="ShopNodeDbConfig.cs" t="Include" />
+        <e p="ShopNodeNetworkConfig.cs" t="Include" />
+      </e>
+      <e p="Shop.ReadModel" t="IncludeRecursive">
+        <e p="AccountProjectionBuilder.cs" t="Include" />
+        <e p="App.config" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Context" t="Include">
+          <e p="Account.cs" t="Include" />
+          <e p="AccountOperations.cs" t="Include" />
+          <e p="AccountTransaction.cs" t="Include" />
+          <e p="Good.cs" t="Include" />
+          <e p="Order.cs" t="Include" />
+          <e p="OrderItem.cs" t="Include" />
+          <e p="ShopDbContext.cs" t="Include" />
+          <e p="Sku.cs" t="Include" />
+          <e p="SkuReserve.cs" t="Include" />
+          <e p="SkuStock.cs" t="Include" />
+          <e p="SkuStockHistory.cs" t="Include" />
+          <e p="StockOperation.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+        </e>
+        <e p="DomanServices" t="Include">
+          <e p="SkuPriceQuery.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Shop.ReadModel.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="OrdersProjectionBuilder.cs" t="Include" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="ReserveEntryNotFoundException.cs" t="Include" />
+        <e p="Shop.ReadModel.csproj" t="IncludeRecursive" />
+        <e p="SkuProjectionBuilder.cs" t="Include" />
+        <e p="SkuStockEntryNotFoundException.cs" t="Include" />
+        <e p="SkuStockProjectionBuilder.cs" t="Include" />
+      </e>
+      <e p="Shop.sln" t="IncludeFlat" />
+      <e p="Shop.Tests.Acceptance" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Shop.Tests.Acceptance.AssemblyInfo.cs" t="Include" />
+              <e p="Shop.Tests.Acceptance.Program.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Shop.Tests.Acceptance.csproj" t="IncludeRecursive" />
+        <e p="SqlSequence_tests.cs" t="Include" />
+      </e>
+      <e p="Shop.Tests.Unit" t="IncludeRecursive">
+        <e p="AccountAggregate" t="Include">
+          <e p="Account_commands_tests.cs" t="Include" />
+          <e p="Account_creation_tests.cs" t="Include" />
+          <e p="Account_hydration_tests.cs" t="Include" />
+          <e p="ProjectionBuilder" t="Include">
+            <e p="Account_projection_builder_test.cs" t="Include" />
+            <e p="Account_projection_tests.cs" t="Include" />
+            <e p="Account_transactions_projection_tests.cs" t="Include" />
+          </e>
+        </e>
+        <e p="AggregateExtensions.cs" t="Include" />
+        <e p="App.config" t="Include" />
+        <e p="AppReadme" t="Include">
+          <e p="Compare-NET-Objects-Help.txt" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="BuyNowProcess_tests.cs" t="Include" />
+        <e p="ContainerTest.cs" t="Include" />
+        <e p="DomainServices" t="Include">
+          <e p="InMemoryPriceCalculator.cs" t="Include" />
+        </e>
+        <e p="Given_new_user.cs" t="Include" />
+        <e p="InMemory_sequence_provider_tests.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Shop.Tests.Unit.AssemblyInfo.cs" t="Include" />
+              <e p="Shop.Tests.Unit.Program.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="OrderAggregate" t="Include">
+          <e p="Aggregate" t="Include">
+            <e p="Commands" t="Include">
+              <e p="Completed_order_tests.cs" t="Include" />
+              <e p="Order_calculate_total_test.cs" t="Include" />
+              <e p="Order_commands_adds_bad_item.cs" t="Include" />
+              <e p="Order_guards_its_negative_number_on_creation.cs" t="Include" />
+            </e>
+            <e p="Hydration" t="Include">
+              <e p="Order_creates_from_event.cs" t="Include" />
+              <e p="Order_when_adding_correct_item_tests.cs" t="Include" />
+            </e>
+          </e>
+          <e p="ProjectionBuilders" t="Include">
+            <e p="Order_created_projection_test.cs" t="Include" />
+            <e p="Order_projection_builder_test.cs" t="Include" />
+          </e>
+        </e>
+        <e p="packages.config" t="Include" />
+        <e p="ProjectionBuilderTest.cs" t="Include" />
+        <e p="Sequence_provider_tests.cs" t="Include" />
+        <e p="Shop.Tests.Unit.csproj" t="IncludeRecursive" />
+        <e p="SkuAggregate" t="Include">
+          <e p="Aggregate" t="Include">
+            <e p="Sku_creation_tests.cs" t="Include" />
+          </e>
+          <e p="ProjectionBuilder" t="Include">
+            <e p="Sku_created_projection_tests.cs" t="Include" />
+            <e p="SkuProjectionBuilderTests.cs" t="Include" />
+          </e>
+        </e>
+        <e p="SkuStockAggregate" t="Include">
+          <e p="Aggregate" t="Include">
+            <e p="SkuStock_negative_creation_tests.cs" t="Include" />
+            <e p="SkuStock_replenishment_tests.cs" t="Include" />
+            <e p="SkuStock_reserve_expiration_tests.cs" t="Include" />
+            <e p="SkuStock_reserve_first_time_tests.cs" t="Include" />
+            <e p="SkuStock_reserve_renew_tests.cs" t="Include" />
+            <e p="SkuStock_reserve_take_tests.cs" t="Include" />
+            <e p="SkuStock_successfull_creation_tests.cs" t="Include" />
+            <e p="SkuStock_take_tests.cs" t="Include" />
+          </e>
+          <e p="ProjectionBuilder" t="Include">
+            <e p="SkuStock_added_tests.cs" t="Include" />
+            <e p="SkuStock_added_two_times_tests.cs" t="Include" />
+            <e p="SkuStock_added_without_sku_created_tests.cs" t="Include" />
+            <e p="SkuStock_created_tests.cs" t="Include" />
+            <e p="SkuStock_double_reserved_tests.cs" t="Include" />
+            <e p="SkuStock_renewed_tests.cs" t="Include" />
+            <e p="SkuStock_reserve_canceled_errors_tests.cs" t="Include" />
+            <e p="SkuStock_reserve_canceled_tests.cs" t="Include" />
+            <e p="SkuStock_reserve_expired_errors_tests.cs" t="Include" />
+            <e p="SkuStock_reserve_expired_tests.cs" t="Include" />
+            <e p="SkuStock_reserve_renewed_errors_test.cs" t="Include" />
+            <e p="SkuStock_reserve_taken_errors_test.cs" t="Include" />
+            <e p="SkuStock_reserve_taken_tests.cs" t="Include" />
+            <e p="SkuStock_reserved_tests.cs" t="Include" />
+            <e p="SkuStock_reserved_wihout_sku_entry_tests.cs" t="Include" />
+            <e p="SkuStock_taken_errors_test.cs" t="Include" />
+            <e p="SkuStock_taken_tests.cs" t="Include" />
+            <e p="SkuStockProjectionBuilderTests.cs" t="Include" />
+          </e>
+        </e>
+        <e p="UserAggregate" t="Include">
+          <e p="User_created_tests.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Shop.Web" t="IncludeRecursive">
+        <e p=".gitignore" t="Include" />
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="ClientApp" t="Include">
+          <e p="app" t="Include">
+            <e p="app.module.browser.ts" t="Include" />
+            <e p="app.module.server.ts" t="Include" />
+            <e p="app.module.shared.ts" t="Include" />
+            <e p="components" t="Include">
+              <e p="app" t="Include">
+                <e p="app.component.css" t="Include" />
+                <e p="app.component.html" t="Include" />
+                <e p="app.component.ts" t="Include" />
+              </e>
+              <e p="counter" t="Include">
+                <e p="counter.component.html" t="Include" />
+                <e p="counter.component.spec.ts" t="Include" />
+                <e p="counter.component.ts" t="Include" />
+              </e>
+              <e p="fetchdata" t="Include">
+                <e p="fetchdata.component.html" t="Include" />
+                <e p="fetchdata.component.ts" t="Include" />
+              </e>
+              <e p="home" t="Include">
+                <e p="home.component.html" t="Include" />
+                <e p="home.component.ts" t="Include" />
+              </e>
+              <e p="navmenu" t="Include">
+                <e p="navmenu.component.css" t="Include" />
+                <e p="navmenu.component.html" t="Include" />
+                <e p="navmenu.component.ts" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="boot.browser.ts" t="Include" />
+          <e p="boot.server.ts" t="Include" />
+          <e p="test" t="Include">
+            <e p="boot-tests.ts" t="Include" />
+            <e p="karma.conf.js" t="Include" />
+          </e>
+        </e>
+        <e p="CompositionRoot.cs" t="Include" />
+        <e p="Controllers" t="Include">
+          <e p="AccountController.cs" t="Include" />
+          <e p="ApiRouteAttribute.cs" t="Include" />
+          <e p="AuthController.cs" t="Include" />
+          <e p="Domain" t="Include">
+            <e p="OrderController.cs" t="Include" />
+            <e p="SkuController.cs" t="Include" />
+            <e p="SkuStockController.cs" t="Include" />
+            <e p="UserController.cs" t="Include" />
+          </e>
+          <e p="Errors.cs" t="Include" />
+          <e p="HomeController.cs" t="Include" />
+          <e p="SampleDataController.cs" t="Include" />
+        </e>
+        <e p="Identity" t="Include">
+          <e p="AppUser.cs" t="Include" />
+          <e p="Constants.cs" t="Include" />
+          <e p="DesignTimeDbContextFactory.cs" t="Include" />
+          <e p="IJwtFactory.cs" t="Include" />
+          <e p="JwtFactory.cs" t="Include" />
+          <e p="JwtIssuerOptions.cs" t="Include" />
+          <e p="ShopIdentityDbContext.cs" t="Include" />
+          <e p="ViewModels" t="Include">
+            <e p="CredentialsViewModel.cs" t="Include" />
+            <e p="CredentialsViewModelValidator.cs" t="Include" />
+            <e p="RegistrationViewModel.cs" t="Include" />
+            <e p="RegistrationViewModelValidator.cs" t="Include" />
+            <e p="ViewModelToEntityMappingProfile.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="20170927164606_initial.cs" t="Include" />
+          <e p="20170927164606_initial.Designer.cs" t="Include" />
+          <e p="20170927172603_customUser.cs" t="Include" />
+          <e p="20170927172603_customUser.Designer.cs" t="Include" />
+          <e p="20170927173740_removed_user_gid.cs" t="Include" />
+          <e p="20170927173740_removed_user_gid.Designer.cs" t="Include" />
+          <e p="ShopIdentityDbContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="npm-shrinkwrap.json" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Shop.Web.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="package.json" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Shop.Web.csproj" t="IncludeRecursive" />
+        <e p="ShopNodeAddress.cs" t="Include" />
+        <e p="ShopWeb.Logs" t="Include">
+          <e p="log_201710191600.txt" t="Include" />
+          <e p="log_201710191630.txt" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="tsconfig.json" t="Include" />
+        <e p="Views" t="Include">
+          <e p="_ViewImports.cshtml" t="Include" />
+          <e p="_ViewStart.cshtml" t="Include" />
+          <e p="home" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Shared" t="Include">
+            <e p="_Layout.cshtml" t="Include" />
+            <e p="Error.cshtml" t="Include" />
+          </e>
+        </e>
+        <e p="webpack.config.js" t="Include" />
+        <e p="webpack.config.vendor.js" t="Include" />
+        <e p="wwwroot" t="Include">
+          <e p="favicon.ico" t="Include" />
+        </e>
+      </e>
+    </e>
+    <e p="$USER_HOME$/Library/Caches/Rider2017.2/resharper-host/local/Transient/ReSharperHost/v10/SolutionCaches/_Shop.-1424188561.00" t="ExcludeRecursive" />
+  </component>
+</project>
