@@ -12,7 +12,7 @@ namespace Shop.Node {
         public ShopLogConfiguration(LogEventLevel level = LogEventLevel.Verbose)
         {
             WriteTo.Console(level,DefaultTemplate);
-            WriteTo.RollingFile(".\\Logs\\shop_node_log_{HalfHour}.txt", level, DefaultTemplate);
+            WriteTo.RollingFile(".\\Logs.Shop.Node\\shop_node_log_{HalfHour}.txt", level, DefaultTemplate);
         }
     }
 }

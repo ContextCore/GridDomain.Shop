@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using Shop.Infrastructure;
+using Shop.ReadModel.Context;
+using Shop.ReadModel.Queries;
 using Shop.Web.Identity;
 
 namespace Shop.Web {
@@ -20,44 +22,58 @@ namespace Shop.Web {
         private const string SecretKey = "iNivDmHLpUA223sqsfhqGbMRdRj1PVkH"; // todo: get this from somewhere secure
         public static readonly SymmetricSecurityKey SigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SecretKey));
 
-        public static void Configure(ContainerBuilder builder, IConfiguration configuration)
+        public static void Configure(ContainerBuilder builder, ShopWebConfig config, ICommandExecutor gridNode)
         {
-            var node = ConnectToNode();
-            builder.RegisterInstance(node).As<ICommandExecutor>();
+            builder.RegisterInstance(gridNode).As<ICommandExecutor>();
 
-           var sequenceProvider = new SqlSequenceProvider("Server = (local); Database = ShopRead; Integrated Security = true; MultipleActiveResultSets = True");
+            var sequenceProvider = new SqlSequenceProvider(config.ConnectionStrings.ShopSequences);
             sequenceProvider.Connect();
 
             builder.RegisterInstance(sequenceProvider).As<ISequenceProvider>();
 
-            var options = new DbContextOptionsBuilder<ShopIdentityDbContext>().UseSqlServer(configuration.GetConnectionString("ShopIdentity")).Options;
+            var options = new DbContextOptionsBuilder<ShopIdentityDbContext>().UseSqlServer(config.ConnectionStrings.ShopIdentity).Options;
             builder.Register(c => new ShopIdentityDbContext(options)).InstancePerLifetimeScope();
 
-
-            // jwt wire up
-            // Get options from app settings
-            var jwtAppSettingOptions = configuration.GetSection(nameof(JwtIssuerOptions));
-
+            
             // Configure JwtIssuerOptions
-            builder.Register(c => new JwtIssuerOptions()
+            builder.Register(c => new Identity.JwtIssuerOptions()
                                                  {
-                                                     Issuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)],
-                                                     Audience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)],
+                                                     Issuer = config.JwtIssuerOptions.Issuer,
+                                                     Audience = config.JwtIssuerOptions.Audience,
                                                      SigningCredentials = new SigningCredentials(SigningKey, SecurityAlgorithms.HmacSha256)
                                                  });
 
             builder.RegisterType<JwtFactory>().As<IJwtFactory>().ExternallyOwned();
+
+
+            var queriesRoot = new QueriesCompositionRoot(config.ConnectionStrings.ShopRead);
+            queriesRoot.Configure(builder);
+        }
+    }
+
+    internal class CannotConnectToNodeException : Exception { }
+
+    //TODO:place in readmodel or find better place
+    public class QueriesCompositionRoot
+    {
+        private readonly string _readDbConnectionString;
+
+        public QueriesCompositionRoot(string readDbConnectionString)
+        {
+            _readDbConnectionString = readDbConnectionString;
         }
 
-        private static IGridDomainNode ConnectToNode()
+        public void Configure(ContainerBuilder builder)
         {
-            var address = new ShopNodeAddress();
-            var connector = new GridNodeConnector(new NodeConfiguration("ShopNode", new ShopNodeAddress()));
-            Log.Information("started connect to griddomain node at {@address}", address);
-            connector.Connect()
-                     .ContinueWith(t => Log.Information("Connected to griddomain node at {@address}", address),
-                                        TaskContinuationOptions.OnlyOnRanToCompletion);
-            return connector;
+            var options = new DbContextOptionsBuilder<ShopDbContext>().UseSqlServer(_readDbConnectionString).Options;
+            builder.Register<ShopDbContext>(c => new ShopDbContext(options))
+                   .AsSelf()
+                   .InstancePerLifetimeScope();
+
+            builder.RegisterType<UserInfoQuery>()
+                   .As<IUserInfoQuery>()
+                   .InstancePerLifetimeScope();
         }
+
     }
 }

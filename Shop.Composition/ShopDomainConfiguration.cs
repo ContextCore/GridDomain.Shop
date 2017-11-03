@@ -11,15 +11,6 @@ using Shop.ReadModel.Context;
 using Shop.ReadModel.DomanServices;
 
 namespace Shop.Composition {
-
-    public static class UnityEtensions
-    {
-        public static void RegisterType<TAbstr, TImpl>(this ContainerBuilder builder)
-        {
-            builder.RegisterType<TImpl>().
-                    As<TAbstr>();
-        }
-    }
     public class ShopDomainConfiguration : IDomainConfiguration
     {
         public const string ShopReadDbConnectionString = "Server = (local); Database = ShopRead; Integrated Security = true; MultipleActiveResultSets = True";
@@ -48,7 +39,12 @@ namespace Shop.Composition {
 
         private void Compose(ContainerBuilder container)
         {
-            container.RegisterInstance<ISkuPriceQuery>(new SkuPriceQuery(() => new ShopDbContext(_readModelContextOptions)));
+            container.RegisterInstance<Func<ShopDbContext>>(() => new ShopDbContext(_readModelContextOptions));
+
+            container.RegisterType<SkuPriceQuery>()
+                     .As<ISkuPriceQuery>()
+                     .ExternallyOwned();
+
             container.RegisterType<SqlPriceCalculator>().As<IPriceCalculator>().SingleInstance();
             container.RegisterInstance<ISequenceProvider>(new SqlSequenceProvider(_dbConnectionString));
             container.RegisterInstance<ILogger>(Log.Logger);

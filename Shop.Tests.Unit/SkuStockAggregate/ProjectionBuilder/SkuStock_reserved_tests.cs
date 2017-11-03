@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using Newtonsoft.Json;
 using Serilog;
 using Shop.Domain.Aggregates.SkuStockAggregate.Events;
 using Shop.ReadModel.Context;
@@ -8,22 +7,6 @@ using Xunit;
 
 namespace Shop.Tests.Unit.SkuStockAggregate.ProjectionBuilder
 {
-    public static class ObjectLogExtensions
-    {
-        private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings
-                                                                                {
-                                                                                    TypeNameHandling
-                                                                                        =
-                                                                                        TypeNameHandling
-                                                                                            .All
-                                                                                };
-
-        public static string ToPropsString(this object o)
-        {
-            return JsonConvert.SerializeObject(o, Formatting.Indented, JsonSerializerSettings);
-        }
-    }
-
     public class SkuStock_reserved_tests : SkuStockProjectionBuilderTests
     {
         private StockAdded _stockAddedEvent;

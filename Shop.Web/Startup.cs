@@ -1,10 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
+using GridDomain.Node;
+using GridDomain.Node.Configuration;
+using GridDomain.Tools.Connector;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -14,6 +18,8 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
+using Shop.Node;
 using Shop.Web.Identity;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -21,13 +27,15 @@ namespace Shop.Web
 {
     public class Startup
     {
+        private ShopWebConfig Config { get; }
+
         public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
-            Configuration = configuration;
             Environment = env;
+            Config = new ShopWebConfig();
+            configuration.Bind(Config);
         }
 
-        public IConfiguration Configuration { get; }
         public IHostingEnvironment Environment { get; }
 
         public void ConfigureServices(IServiceCollection s)
@@ -40,8 +48,8 @@ namespace Shop.Web
             s.AddIdentity<AppUser, IdentityRole>
                     (o =>
                     {
-                                                                                 // configure identity options
-                                                                                 o.Password.RequireDigit = false;
+                        // configure identity options
+                        o.Password.RequireDigit = false;
                         o.Password.RequireLowercase = false;
                         o.Password.RequireUppercase = false;
                         o.Password.RequireNonAlphanumeric = false;
@@ -57,14 +65,12 @@ namespace Shop.Web
                                           options.AddPolicy(Constants.Strings.AccessPolicy.ApiUser, policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
                                       });
 
-            var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
+          
 
-
-        //    s.Configure<JwtIssuerOptions>(options => jwtAppSettingOptions.Bind(options));
-            s.Configure<JwtIssuerOptions>(options =>
+            s.Configure<Identity.JwtIssuerOptions>(options =>
                                                  {
-                                                     options.Issuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)];
-                                                     options.Audience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)];
+                                                     options.Issuer = Config.JwtIssuerOptions.Issuer;
+                                                     options.Audience = Config.JwtIssuerOptions.Audience;
                                                      options.SigningCredentials = new SigningCredentials(CompositionRoot.SigningKey, SecurityAlgorithms.HmacSha256);
                                                  });
 
@@ -72,10 +78,10 @@ namespace Shop.Web
             var tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = true,
-                ValidIssuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)],
+                ValidIssuer = Config.JwtIssuerOptions.Issuer,
 
                 ValidateAudience = true,
-                ValidAudience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)],
+                ValidAudience = Config.JwtIssuerOptions.Issuer,
 
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = CompositionRoot.SigningKey,
@@ -148,10 +154,38 @@ namespace Shop.Web
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            CompositionRoot.Configure(builder, Configuration);
+            var node = Config.NodeOptions.Remote ? ConnectToNode() : CreateNode();
+            CompositionRoot.Configure(builder, Config, node);
         }
 
-        
-       
+        private IGridDomainNode CreateNode()
+        {
+            var node = new ShopNode(Config.NodeOptions.Name,
+                                    Config.NodeOptions.Host,
+                                    Config.NodeOptions.Port,
+                                    Config.ConnectionStrings.ShopWrite,
+                                    Config.ConnectionStrings.ShopRead);
+            node.Start();
+            return node.DomainNode;
+        }
+
+        private IGridDomainNode ConnectToNode()
+        {
+            var address = new NodeAddress()
+                          {
+                              Host = Config.NodeOptions.Host,
+                              PortNumber = Config.NodeOptions.Port
+                          };
+            var connector = new GridNodeConnector(new NodeConfiguration(Config.NodeOptions.Name, address));
+            Log.Information("started connect to griddomain node at {@address}", address);
+            connector.Connect().Wait(TimeSpan.FromSeconds(10));
+            if(!connector.IsConnected)
+                throw new CannotConnectToNodeException();
+            Log.Information("Connected to griddomain node at {@address}", address);
+            return connector;
+        }
+
+
+
     }
 }

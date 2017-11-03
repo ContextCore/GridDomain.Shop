@@ -40,11 +40,20 @@
 
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+    <Compile Remove="Logs.Shop.Web\**" />
     <Content Remove="ClientApp\**" />
+    <Content Remove="Logs.Shop.Web\**" />
+    <EmbeddedResource Remove="Logs.Shop.Web\**" />
+    <None Remove="Logs.Shop.Web\**" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Shop.Domain\Shop.Domain.csproj" />
+    <ProjectReference Include="..\Shop.Node\Shop.Node.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Configurations\" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
