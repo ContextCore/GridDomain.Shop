@@ -22,10 +22,12 @@ namespace Shop.Tests.Acceptance
             DeleteCreatedSequences(CreatedSequences.ToArray());
             CreatedSequences.Clear();
         }
-
-
+//for local docker-based sql server on linux/mac
         private const string ConnectionString =
-            "Server = (local); Database = ShopWrite; Integrated Security = true; MultipleActiveResultSets = True";
+            "Server = localhost,1400; Database = ShopWrite; User = sa; Password=P@ssw0rd1; MultipleActiveResultSets = True";
+//for local windows-based sql server        
+//        private const string ConnectionString =
+//            "Server = localhost;  Database = ShopWrite; User = sa; Password=P@ssw0rd1;  MultipleActiveResultSets = True";
 
         private void DeleteCreatedSequences(params string[] sequences)
         {

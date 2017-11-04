@@ -7,6 +7,7 @@ using Autofac;
 using Autofac.Core;
 using GridDomain.Configuration;
 using GridDomain.Node.Configuration.Composition;
+using Moq;
 using Shop.Composition;
 using Xunit;
 
@@ -18,8 +19,10 @@ namespace Shop.Tests.Unit
         public void AllRegistrationsMustBeResolvable()
         {
             var container = new ContainerBuilder();
-            var cfg = new ShopDomainConfiguration();
+            var cfg = new ShopDomainConfiguration("");
             var domainBuilder = new DomainBuilder();
+            var messageProcessContextMock = Mock.Of<IMessageProcessContext>();
+            container.RegisterInstance(messageProcessContextMock);
             domainBuilder.Register(cfg);
             domainBuilder.Configure(container);
             ResolveAll(container.Build());

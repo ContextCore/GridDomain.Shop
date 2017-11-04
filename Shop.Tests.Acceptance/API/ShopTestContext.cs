@@ -47,12 +47,12 @@ namespace Shop.Tests.Acceptance.API {
 
     private IDictionary<string,string> Configuration { get; }= new Dictionary<string,string>
     {
-         {"ConnectionStrings:ShopIdentity","Server = (local); Database = ShopIdentity; Integrated Security = true; MultipleActiveResultSets = True" },
-         {"ConnectionStrings:ShopSequences","Server = (local); Database = ShopIdentity; Integrated Security = true; MultipleActiveResultSets = True" },
-         {"ConnectionStrings:ShopWrite","Server = (local); Database = ShopWrite; Integrated Security = true; MultipleActiveResultSets = True" },
-         {"ConnectionStrings:ShopRead","Server = (local); Database = ShopRead; Integrated Security = true; MultipleActiveResultSets = True" },
-         {"JwtIssuerOptions:Issuer","Server = (local); Database = ShopIdentity; Integrated Security = true; MultipleActiveResultSets = True" },
-         {"JwtIssuerOptions:Audience","Server = (local); Database = ShopIdentity; Integrated Security = true; MultipleActiveResultSets = True" },
+         {"ConnectionStrings:ShopIdentity","Server = localhost; Database = ShopIdentity; User = sa; Password=P@ssw0rd1;  MultipleActiveResultSets = True" },
+         {"ConnectionStrings:ShopSequences","Server = localhost;  Database = ShopIdentity; User = sa; Password=P@ssw0rd1;  MultipleActiveResultSets = True" },
+         {"ConnectionStrings:ShopWrite","Server = localhost;  Database = ShopWrite; User = sa; Password=P@ssw0rd1;  MultipleActiveResultSets = True" },
+         {"ConnectionStrings:ShopRead","Server = localhost;  Database = ShopRead; User = sa; Password=P@ssw0rd1;  MultipleActiveResultSets = True" },
+         {"JwtIssuerOptions:Issuer","Server = localhost;  Database = ShopIdentity; User = sa; Password=P@ssw0rd1;  MultipleActiveResultSets = True" },
+         {"JwtIssuerOptions:Audience","Server = localhost;  Database = ShopIdentity; User = sa; Password=P@ssw0rd1;  MultipleActiveResultSets = True" },
          {"NodeOptions:Remote","false" },
          {"NodeOptions:Port","5003" },
          {"NodeOptions:Host","localhost" },

@@ -4,6 +4,9 @@
     <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.0/build/netcoreapp1.0/xunit.runner.reporters.netcoreapp10.dll" t="Include" />
     <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.0/build/netcoreapp1.0/xunit.runner.utility.netcoreapp10.dll" t="Include" />
     <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.0/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.1/build/netcoreapp1.0/xunit.runner.reporters.netcoreapp10.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.1/build/netcoreapp1.0/xunit.runner.utility.netcoreapp10.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.1/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="Shop.Composition" t="IncludeRecursive">
@@ -22,9 +25,9 @@
         <e p="Properties" t="Include" />
         <e p="Shop.Composition.csproj" t="IncludeRecursive" />
         <e p="ShopDomainConfiguration.cs" t="Include" />
-        <e p="ShopRouteMap.cs" t="Include" />
         <e p="SkuDomainConfiguration.cs" t="Include" />
         <e p="SkuStockDomainConfiguration.cs" t="Include" />
+        <e p="UnityEtensions.cs" t="Include" />
         <e p="UserDomainConfiguration.cs" t="Include" />
       </e>
       <e p="Shop.Domain" t="IncludeRecursive">
@@ -144,8 +147,9 @@
         <e p="packages.config" t="Include" />
         <e p="ProcessManagers" t="Include">
           <e p="BuyNow.cs" t="Include" />
-          <e p="BuyNowProcessManagerFactory.cs" t="Include" />
+          <e p="BuyNowProcessStateFactory.cs" t="Include" />
           <e p="BuyNowState.cs" t="Include" />
+          <e p="InvalidMessageToCreateStateException.cs" t="Include" />
         </e>
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
@@ -217,14 +221,25 @@
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
+        <e p="Queries" t="Include">
+          <e p="UserInfoQuery.cs" t="Include" />
+        </e>
         <e p="ReserveEntryNotFoundException.cs" t="Include" />
         <e p="Shop.ReadModel.csproj" t="IncludeRecursive" />
         <e p="SkuProjectionBuilder.cs" t="Include" />
         <e p="SkuStockEntryNotFoundException.cs" t="Include" />
         <e p="SkuStockProjectionBuilder.cs" t="Include" />
+        <e p="UserProjectionsBuilder.cs" t="Include" />
       </e>
       <e p="Shop.sln" t="IncludeFlat" />
       <e p="Shop.Tests.Acceptance" t="IncludeRecursive">
+        <e p="API" t="Include">
+          <e p="Collection.cs" t="Include" />
+          <e p="Constants.cs" t="Include" />
+          <e p="HttpClientTestExtensions.cs" t="Include" />
+          <e p="ShopTestContext.cs" t="Include" />
+          <e p="UserAcceptanceTests.cs" t="Include" />
+        </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -250,12 +265,9 @@
         </e>
         <e p="AggregateExtensions.cs" t="Include" />
         <e p="App.config" t="Include" />
-        <e p="AppReadme" t="Include">
-          <e p="Compare-NET-Objects-Help.txt" t="Include" />
-        </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="BuyNowProcess_tests.cs" t="Include" />
-        <e p="ContainerTest.cs" t="Include" />
+        <e p="ContainerTests.cs" t="Include" />
         <e p="DomainServices" t="Include">
           <e p="InMemoryPriceCalculator.cs" t="Include" />
         </e>
@@ -312,6 +324,7 @@
             <e p="SkuStock_take_tests.cs" t="Include" />
           </e>
           <e p="ProjectionBuilder" t="Include">
+            <e p="ObjectLogExtensions.cs" t="Include" />
             <e p="SkuStock_added_tests.cs" t="Include" />
             <e p="SkuStock_added_two_times_tests.cs" t="Include" />
             <e p="SkuStock_added_without_sku_created_tests.cs" t="Include" />
@@ -374,24 +387,33 @@
           </e>
           <e p="boot.browser.ts" t="Include" />
           <e p="boot.server.ts" t="Include" />
+          <e p="dist" t="Include">
+            <e p="89889688147bd7575d6327160d64e760.svg" t="Include" />
+            <e p="vendor.js" t="Include" />
+          </e>
           <e p="test" t="Include">
             <e p="boot-tests.ts" t="Include" />
             <e p="karma.conf.js" t="Include" />
           </e>
         </e>
         <e p="CompositionRoot.cs" t="Include" />
+        <e p="ConnectionStrings.cs" t="Include" />
         <e p="Controllers" t="Include">
-          <e p="AccountController.cs" t="Include" />
-          <e p="ApiRouteAttribute.cs" t="Include" />
-          <e p="AuthController.cs" t="Include" />
           <e p="Domain" t="Include">
+            <e p="AccountController.cs" t="Include" />
             <e p="OrderController.cs" t="Include" />
             <e p="SkuController.cs" t="Include" />
             <e p="SkuStockController.cs" t="Include" />
-            <e p="UserController.cs" t="Include" />
+            <e p="UserCreatedViewModel.cs" t="Include" />
           </e>
           <e p="Errors.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
+          <e p="Identity" t="Include">
+            <e p="AuthController.cs" t="Include" />
+            <e p="UserController.cs" t="Include" />
+            <e p="UserViewModel.cs" t="Include" />
+          </e>
+          <e p="Routes.cs" t="Include" />
           <e p="SampleDataController.cs" t="Include" />
         </e>
         <e p="Identity" t="Include">
@@ -410,15 +432,17 @@
             <e p="ViewModelToEntityMappingProfile.cs" t="Include" />
           </e>
         </e>
+        <e p="JwtIssuesOptions.cs" t="Include" />
         <e p="Migrations" t="Include">
-          <e p="20170927164606_initial.cs" t="Include" />
-          <e p="20170927164606_initial.Designer.cs" t="Include" />
-          <e p="20170927172603_customUser.cs" t="Include" />
-          <e p="20170927172603_customUser.Designer.cs" t="Include" />
-          <e p="20170927173740_removed_user_gid.cs" t="Include" />
-          <e p="20170927173740_removed_user_gid.Designer.cs" t="Include" />
+          <e p="customUser.cs" t="Include" />
+          <e p="customUser.Designer.cs" t="Include" />
+          <e p="initial.cs" t="Include" />
+          <e p="initial.Designer.cs" t="Include" />
+          <e p="removed_user_gid.cs" t="Include" />
+          <e p="removed_user_gid.Designer.cs" t="Include" />
           <e p="ShopIdentityDbContextModelSnapshot.cs" t="Include" />
         </e>
+        <e p="NodeOptions.cs" t="Include" />
         <e p="npm-shrinkwrap.json" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -434,10 +458,7 @@
         </e>
         <e p="Shop.Web.csproj" t="IncludeRecursive" />
         <e p="ShopNodeAddress.cs" t="Include" />
-        <e p="ShopWeb.Logs" t="Include">
-          <e p="log_201710191600.txt" t="Include" />
-          <e p="log_201710191630.txt" t="Include" />
-        </e>
+        <e p="ShopWebConfig.cs" t="Include" />
         <e p="Startup.cs" t="Include" />
         <e p="tsconfig.json" t="Include" />
         <e p="Views" t="Include">
@@ -454,6 +475,12 @@
         <e p="webpack.config.js" t="Include" />
         <e p="webpack.config.vendor.js" t="Include" />
         <e p="wwwroot" t="Include">
+          <e p="dist" t="Include">
+            <e p="89889688147bd7575d6327160d64e760.svg" t="Include" />
+            <e p="vendor-manifest.json" t="Include" />
+            <e p="vendor.css" t="Include" />
+            <e p="vendor.js" t="Include" />
+          </e>
           <e p="favicon.ico" t="Include" />
         </e>
       </e>

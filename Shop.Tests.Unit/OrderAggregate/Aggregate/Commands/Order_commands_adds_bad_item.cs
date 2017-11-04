@@ -21,7 +21,7 @@ namespace Shop.Tests.Unit.OrderAggregate.Aggregate.Commands
         }
 
         [Fact]
-        public async Task Order_should_throw_exñeption_on_item_add_with_negative_money()
+        public async Task Order_should_throw_exception_on_item_add_with_negative_money()
         {
             var scenario = GivenNewOrder();
             await scenario.When(new AddItemToOrderCommand(scenario.Aggregate.Id,
@@ -33,7 +33,7 @@ namespace Shop.Tests.Unit.OrderAggregate.Aggregate.Commands
         }
 
         [Fact]
-        public async Task Order_should_throw_exñeption_on_item_add_with_negative_quantity()
+        public async Task Order_should_throw_exception_on_item_add_with_negative_quantity()
         {
             var scenario = GivenNewOrder();
             await scenario.When(new AddItemToOrderCommand(scenario.Aggregate.Id,

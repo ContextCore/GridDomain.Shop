@@ -14,7 +14,7 @@ namespace Shop.Node
         private readonly ILogger _logger;
         public static NodeConfiguration DefaultNodeConfiguration { get; } = new ShopNodeConfiguration();
         public static ISqlNodeDbConfiguration DefaultPersistenceConfiguration { get; } = new ShopNodeDbConfig();
-        public static string DefaultReadDbConnectionString { get; } = @"Server = (local); Database = ShopRead; Integrated Security = true; MultipleActiveResultSets = True";
+        public static string DefaultReadDbConnectionString { get; } = @"Server = localhost;  Database = ShopRead; User = sa; Password=P@ssw0rd1;  MultipleActiveResultSets = True";
 
         public NodeConfiguration NodeConfiguration { get; } 
         public ISqlNodeDbConfiguration PersistenceConfiguration { get; }
